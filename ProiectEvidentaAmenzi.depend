@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1514140574 source:d:\cplusplus\proiecte\proiectevidentaamenzi\main.cpp
+	<iostream>
+
+1580939653 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\amenzi.cpp
+	"Amenzi.h"
+
+1580940352 d:\cplusplus\proiecte\proiectevidentaamenzi\include\amenzi.h
+
