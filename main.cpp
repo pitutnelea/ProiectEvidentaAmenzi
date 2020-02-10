@@ -1,7 +1,8 @@
 #include <iostream>
 using namespace std;
+#include "Amenzi.h"
 
-void Meniu()
+/*void Meniu()
 {
 	1. Adauga agent
 	2. Sterge agent
@@ -11,6 +12,8 @@ void Meniu()
 	6. Afiseaza situatie amenzi
 	7. Iesire
 }
+
+din meniu se afiseaza alt meniu
 void NoulMeniu()
 {   1. Adauga agent
 	2. Sterge agent
@@ -18,9 +21,8 @@ void NoulMeniu()
 	4. Afiseaza amenzi agent
 	5. Afiseaza amenzi contravenient
 	6. Afiseaza situatie amenzi
-	7. Iesire
-	8. Revenire la ecranul anterior > care va afisa functia Meniu
-}
+	7. Revenire la ecranul anterior > care va afisa functia Meniu
+}*/
 
 int main()
 {

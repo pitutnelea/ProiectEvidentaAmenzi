@@ -3,22 +3,19 @@
 #include "Politist.h"
 #include "Contravenient.h"
 
-enum Categorii{bicicleta, motoretaMotocicleta,autoturism,camion,tractor};
+enum Categorii{bicicleta, motoretaMotocicleta, autoturism, camion, tractor};
 class Amenzi
 {
     public:
-        Amenzi();
-        Amenzi(unsigned int, unsigned int);
-        void AfiseazaAmenziAgent(); //toate amenzile date de un anumit agent
-        void AfiseazaAmenziContravenient(); //toate amenzile luate de un anumit contravenient
-        void AfisezaSituatieAmenzi // afisez fiecare agent cu totalul amenzilor date
+        Amenzi(unsigned int, unsigned int, double);
+        void SetAmenda(double amenda){_amenda = amenda;}
+        double GetAmenda(){return _amenda;}
         virtual ~Amenzi();
-
     protected:
 
     private:
         Politist _codPolitist;
-        Contravenient _codContraveninent;
+        Contravenient _codContravenient;
         double _amenda;
 };
 

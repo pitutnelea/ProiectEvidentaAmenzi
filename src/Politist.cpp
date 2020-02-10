@@ -1,8 +1,14 @@
 #include "Politist.h"
+#include <iostream>
+using namespace std;
 
-Politist::Politist()
+Politist::Politist(unsigned int codPolitist)
 {
-    //ctor
+    _codPolitist = codPolitist;
+}
+
+Politist::Politist(string numePolitist, unsigned int codPolitist):_numePolitist{numePolitist}, _codPolitist{codPolitist}
+{
 }
 
 Politist::~Politist()

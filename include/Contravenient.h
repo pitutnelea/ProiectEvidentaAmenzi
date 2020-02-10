@@ -2,19 +2,23 @@
 #define CONTRAVENIENT_H
 #include <string>
 #include <iostream>
+using namespace std;
 
 class Contravenient
 {
     public:
-        Contravenient();
+        Contravenient(unsigned int);
         Contravenient(string, unsigned int);
-        void AdaugaContravenient();
+        void SetNumeContravenient(string numeContravenient){_numeContravenient = numeContravenient;}
+        string GetNumeContravenient() {return _numeContravenient;}
+        void SetCodContravenien(unsigned int codContravenient){_codContravenient = codContravenient;}
+        unsigned int GetCodContravenient() {return _codContravenient;}
         virtual ~Contravenient();
 
     protected:
 
     private:
-        string _nume;
+        string _numeContravenient;
         unsigned int _codContravenient;
 };
 

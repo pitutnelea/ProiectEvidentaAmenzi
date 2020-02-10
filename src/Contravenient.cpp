@@ -1,8 +1,14 @@
 #include "Contravenient.h"
+#include <iostream>
+using namespace std;
 
-Contravenient::Contravenient()
+Contravenient::Contravenient(unsigned int codContravenient)
 {
-    //ctor
+    _codContravenient = codContravenient;
+}
+
+Contravenient::Contravenient(string numeContravenient, unsigned int codContravenient):_numeContravenient{numeContravenient}, _codContravenient{codContravenient}
+{
 }
 
 Contravenient::~Contravenient()
