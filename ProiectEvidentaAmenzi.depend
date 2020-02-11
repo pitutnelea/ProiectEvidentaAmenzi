@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1581377491 source:d:\cplusplus\proiecte\proiectevidentaamenzi\main.cpp
+1581455118 source:d:\cplusplus\proiecte\proiectevidentaamenzi\main.cpp
 	<iostream>
 	"Amenzi.h"
 	"ClasaHelp.h"
@@ -12,7 +12,7 @@
 	"Politist.h"
 	"Contravenient.h"
 
-1581365653 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\clasahelp.cpp
+1581455136 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\clasahelp.cpp
 	"ClasaHelp.h"
 	<iostream>
 
@@ -32,5 +32,5 @@
 	<string>
 	<iostream>
 
-1581365354 d:\cplusplus\proiecte\proiectevidentaamenzi\include\clasahelp.h
+1581450846 d:\cplusplus\proiecte\proiectevidentaamenzi\include\clasahelp.h
 

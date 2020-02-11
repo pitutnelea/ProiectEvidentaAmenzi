@@ -12,10 +12,10 @@ ClasaHelp::~ClasaHelp()
     //dtor
 }
 
-void ClasaHelp::AdaugaPolitist()
+/*void ClasaHelp::AdaugaPolitist()
 {
     cout << "Introduceti numele politistului: "<<endl;
-}
+}*/
 
 void ClasaHelp::StergePolitist()
 {

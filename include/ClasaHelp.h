@@ -5,7 +5,7 @@ class ClasaHelp
 {
     public:
         ClasaHelp();
-        void AdaugaPolitist();
+        //void AdaugaPolitist();
         void StergePolitist(); ////intro noua clasa sau mainul o lista de vecetori cupolista
         void AdaugaContravenient();
         void StergeContravenient();
