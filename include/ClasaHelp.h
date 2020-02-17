@@ -1,11 +1,11 @@
-#ifndef CLASAHELP_H
+/*#ifndef CLASAHELP_H
 #define CLASAHELP_H
 
 class ClasaHelp
 {
     public:
         ClasaHelp();
-        //void AdaugaPolitist();
+        void AdaugaPolitist();
         void StergePolitist(); ////intro noua clasa sau mainul o lista de vecetori cupolista
         void AdaugaContravenient();
         void StergeContravenient();
@@ -20,4 +20,4 @@ class ClasaHelp
         //sa am nevoie de vectori
 };
 
-#endif // CLASAHELP_H
+#endif // CLASAHELP_H*/
