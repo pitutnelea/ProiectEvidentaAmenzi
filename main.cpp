@@ -21,18 +21,40 @@ int main()
 {
     SectieDePolitie sectie;
     unsigned int nrintrodus = 1;
+    //Politist abc("neli", 1);
+    //cout<< abc.GetNumePolitist();
+
     while (nrintrodus !=0)
     {
         Meniu();
         cin >> nrintrodus;
+
         switch (nrintrodus)
         {
             case 1:
-                {
+            {
                 system ("cls");
                 sectie.AdaugaPolitist();
                 break;
-                }
+            }
+            case 2:
+            {
+                system ("cls");
+                sectie.StergePolitist();
+                break;
+            }
+            case 3:
+            {
+                system ("cls");
+                sectie.AdaugaAmenda();
+                break;
+            }
+            default:
+            {
+                system ("cls");
+                cout<< "Numarul introdus trebuie sa fie intre 0 si 6! Reintroduceti numarul: "<<endl;
+                system("pause");break;
+            }
         }
 
     }

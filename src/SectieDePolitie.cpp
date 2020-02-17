@@ -28,20 +28,39 @@ Politist SectieDePolitie::AdaugaPolitist()
     cout << "Introduceti codul politistului: "<< endl;
     cin >> codPolitist;
     vctPolitist.push_back(Politist{nume, codPolitist});
+
     return Politist{nume, codPolitist};
 }
 
-/*void SectieDePolitie::StergePolitist()
+void SectieDePolitie::StergePolitist()
 {
-    cout << "Introduceti numele politistului pe care doriti sa il stergeti:" <<endl;
+    cout << "Selectati numarul agentului de sters" <<endl;
 }
 
-void SectieDePolitie::AdaugaAmenda()
+Contravenient SectieDePolitie::AdaugaAmenda()
 {
-    cout <<"Introduceti numele contravenientului: "<<endl;
+    system ("cls");
+    string nume;
+    cout << "Introduceti numele soferului: "<< endl;
+    cin >> nume;
+    unsigned int categorie;
+    system ("cls");
+    cout << "Selectati categoria: "<< endl;
+    cout << "1. bicicleta" <<endl;
+    cout << "2. motoreta-motocicleta "<<endl;
+    cout << "3. autoturism" << endl;
+    cout << "4. camion" << endl;
+    cout << "5. tractor "<< endl;
+    cout << "0. revenire ecran anterior" << endl;
+    cin >> categorie;
+    while ((categorie < 0)||(categorie >5))
+    {
+        cout << "Input invalid! Reintroduceti o cifra intr 0 si 5!"<<endl;break;
+    }
+    //return Contravenient{nume, codContravenient};//
 }
 
-void SectieDePolitie::StergeAmenda()
+/*void SectieDePolitie::StergeAmenda()
 {
     cout << "Stergeti numele contravenientului:" <<endl;
 }
