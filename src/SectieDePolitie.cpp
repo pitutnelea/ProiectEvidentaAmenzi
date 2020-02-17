@@ -2,6 +2,9 @@
 #include <string>
 #include <iostream>
 using namespace std;
+#include <sstream>
+#include <algorithm>
+#include <cctype>
 
 SectieDePolitie::SectieDePolitie()
 {
@@ -25,16 +28,41 @@ Politist SectieDePolitie::AdaugaPolitist()
     system ("cls");
     cout << "Introduceti numele politistului: "<< endl;
     cin >> nume;
+    //https://stackoverflow.com/questions/13440831/how-do-i-check-if-input-is-an-integer-string
+    if (any_of(nume.begin(), nume.end(),isdigit))
+    {
+        cout << "No digits allowed in name\n";
+    }
+
     cout << "Introduceti codul politistului: "<< endl;
     cin >> codPolitist;
+    while (!codPolitist)
+    {
+        cout << "Cod invalid! Reintroduceti un cod in afara de: ";
+        for (Politist elem : vctPolitist)
+        {
+            cout << elem.GetCodPolitist();
+            cout << ", ";
+        }
+        cout << " " <<endl;
+        cout << "Reintroduceti codul: ";
+        cin >> codPolitist;
+    }
     vctPolitist.push_back(Politist{nume, codPolitist});
-
     return Politist{nume, codPolitist};
 }
 
-void SectieDePolitie::StergePolitist()
+Politist SectieDePolitie::StergePolitist()
 {
-    cout << "Selectati numarul agentului de sters" <<endl;
+    unsigned int codulAgentului;
+    cout << "Codul si numele aferent fiecarui agent: " << endl;
+    for(Politist elem : vctPolitist)
+    {
+        cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist() <<endl;
+    }
+    cout << "Selectati numarul agentului de sters: ";
+    cin >> codulAgentului;
+    system("pause");
 }
 
 Contravenient SectieDePolitie::AdaugaAmenda()
@@ -53,14 +81,37 @@ Contravenient SectieDePolitie::AdaugaAmenda()
     cout << "5. tractor "<< endl;
     cout << "0. revenire ecran anterior" << endl;
     cin >> categorie;
-    while ((categorie < 0)||(categorie >5))
+    switch (categorie)
     {
-        cout << "Input invalid! Reintroduceti o cifra intr 0 si 5!"<<endl;break;
+        case 0: {break;}
+        case 1:
+        {
+            cout << "Precizati valoarea amenzii: ";
+        }
+        default:
+        {
+            cout << "Input invalid! Reintroduceti o cifra intre 0 si 5: ";
+            cin >> categorie;
+            while ((categorie <0) || (categorie > 5))
+            {
+                cout << "Input invalid! Reintroduceti o cifra intre 0 si 5: ";
+                cin >>categorie;
+            }
+            break;
+            system ("pause");
+        }
     }
+
+    /*while ((categorie < 0)||(categorie >5))
+    {
+
+        cin >> categorie;
+        system ("pause");
+    }*/
     //return Contravenient{nume, codContravenient};//
 }
 
-/*void SectieDePolitie::StergeAmenda()
+void SectieDePolitie::StergeAmenda()
 {
     cout << "Stergeti numele contravenientului:" <<endl;
 }
@@ -78,4 +129,4 @@ void SectieDePolitie::AfiseazaAmenziContravenient()
 void SectieDePolitie::AfisezaSituatieAmenzi()
 {
     cout<< "Se afiseaza fiecare agent cu totalul amenzilor date: "<<endl;
-}*/
+}

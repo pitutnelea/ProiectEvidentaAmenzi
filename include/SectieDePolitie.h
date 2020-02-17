@@ -11,7 +11,7 @@ class SectieDePolitie
     public:
         SectieDePolitie();
         Politist AdaugaPolitist();
-        void StergePolitist(); ////intro noua clasa sau mainul o lista de vecetori cupolista
+        Politist StergePolitist(); ////intro noua clasa sau mainul o lista de vecetori cupolista
         Contravenient AdaugaAmenda();
         void StergeAmenda();
         void AfiseazaAmenziPolitist(); //toate amenzile date de un anumit agent

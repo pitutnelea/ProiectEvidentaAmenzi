@@ -21,8 +21,6 @@ int main()
 {
     SectieDePolitie sectie;
     unsigned int nrintrodus = 1;
-    //Politist abc("neli", 1);
-    //cout<< abc.GetNumePolitist();
 
     while (nrintrodus !=0)
     {
@@ -52,8 +50,9 @@ int main()
             default:
             {
                 system ("cls");
-                cout<< "Numarul introdus trebuie sa fie intre 0 si 6! Reintroduceti numarul: "<<endl;
-                system("pause");break;
+                cout<< "Numarul introdus trebuie sa fie intre 0 si 6! Reintroduceti numarul"<<endl;
+                system("pause");
+                break;
             }
         }
 
