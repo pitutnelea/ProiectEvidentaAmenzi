@@ -7,7 +7,6 @@ using namespace std;
 class Politist
 {
     public:
-        Politist(unsigned int);
         Politist(string, unsigned int);
         void SetNumePolitist(string numePolitist){_numePolitist = numePolitist;}
         string GetNumePolitist() {return _numePolitist;}

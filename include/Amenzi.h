@@ -1,7 +1,5 @@
 #ifndef AMENZI_H
 #define AMENZI_H
-#include "Politist.h"
-#include "Contravenient.h"
 
 enum Categorii{bicicleta, motoretaMotocicleta, autoturism, camion, tractor};
 class Amenzi
@@ -14,8 +12,9 @@ class Amenzi
     protected:
 
     private:
-        Politist _codPolitist;
-        Contravenient _codContravenient;
+        Categorii _categorie;
+        unsigned int _codPolitist;
+        unsigned int _codContravenient;
         double _amenda;
 };
 

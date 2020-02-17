@@ -35,14 +35,14 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Amenzi.h" />
-		<Unit filename="include/ClasaHelp.h" />
 		<Unit filename="include/Contravenient.h" />
 		<Unit filename="include/Politist.h" />
+		<Unit filename="include/SectieDePolitie.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Amenzi.cpp" />
-		<Unit filename="src/ClasaHelp.cpp" />
 		<Unit filename="src/Contravenient.cpp" />
 		<Unit filename="src/Politist.cpp" />
+		<Unit filename="src/SectieDePolitie.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

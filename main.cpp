@@ -1,7 +1,7 @@
-#include <iostream>
 #include "Amenzi.h"
-#include "ClasaHelp.h"
-#include <vector>
+#include "SectieDePolitie.h"
+#include <stdlib.h>
+#include <iostream>
 using namespace std;
 
 void Meniu()
@@ -10,13 +10,37 @@ void Meniu()
     cout<<"Alegeti optiunea dorita:"<<endl;
     cout<< "1. Adauga politist" <<endl;
     cout<< "2. Sterge politist"<<endl;
-    cout<< "3. Adauga contravenient" <<endl;
+    cout<< "3. Adauga amenda" <<endl;
     cout<< "4. Afiseaza amenzi politist"<<endl;
     cout<< "5. Afiseaza amenzi contravenient" <<endl;
     cout<< "6. Afiseaza situatie amenzi" <<endl;
     cout<< "0. Iesire" <<endl;
 }
 
+int main()
+{
+    SectieDePolitie sectie;
+    unsigned int nrintrodus = 1;
+    while (nrintrodus !=0)
+    {
+        Meniu();
+        cin >> nrintrodus;
+        switch (nrintrodus)
+        {
+            case 1:
+                {
+                system ("cls");
+                sectie.AdaugaPolitist();
+                break;
+                }
+        }
+
+    }
+
+    return 0;
+}
+
+/*
 void MeniuSecundar()
 {
     cout<<"Alegeti optiunea dorita:"<<endl;
@@ -30,7 +54,7 @@ void MeniuSecundar()
     cout<< "0. Iesire" <<endl;
 }
 
-Politist *AdaugaPolitist()
+Politist AdaugaPolitist()
 {
     system ("cls");
     cout << "Introduceti numele politistului: "<< endl;
@@ -42,10 +66,10 @@ Politist *AdaugaPolitist()
     Politist{nume, codPolitist};
     //Politist *pntPolitist = new Politist{nume, codPolitist};
 
-    return 0;
+    return Politist{nume, codPolitist};
 }
 
-Contravenient *AdaugaContravenient()
+Contravenient AdaugaContravenient()
 {
     system ("cls");
     cout<<"Introduceti numele contravenientului: "<< endl;
@@ -54,13 +78,13 @@ Contravenient *AdaugaContravenient()
     cout << "Introduceti codul contravenientului:" << endl;
     unsigned int codContravenient;
     cin >> codContravenient;
-    Contravenient{nume, codContravenient};
-    return 0;
-}
 
-int main()
-{
-    vector <Politist *> pntPolitist;
+    return Contravenient{nume, codContravenient};;
+}*/
+
+
+
+/*vector <Politist> pntPolitist;
     Meniu();
     unsigned int nrintrodus = 1;
     while (nrintrodus !=0)
@@ -102,6 +126,4 @@ int main()
 
     //1 vector Politist (are din oficiu un agent virtual, agentul virtual nu il afisez)
     //1 vector Contravenient (e din start pe "0".)
-
-    return 0;
-}
+    */
