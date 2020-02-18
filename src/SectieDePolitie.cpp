@@ -74,6 +74,20 @@ Politist SectieDePolitie::StergePolitist()
     system("pause");
 }
 
+//https://www.geeksforgeeks.org/stdstringcompare-in-c/
+/*void compareOperation(string s1, string s2)
+{
+    // returns a value < 0 (s1 is smaller then s2)
+    if((s1.compare(s2)) < 0)
+        cout << s1 << " is smaller than " << s2 << endl;
+
+    // returns 0(s1, is being comapared to itself)
+    if((s1.compare(s2)) == 0)
+        cout << s1 << " is equal to " << s2 << endl;
+    else
+        cout << "Strings didn't match ";
+}*/
+
 Contravenient SectieDePolitie::AdaugaAmenda()
 {
     system ("cls");
@@ -82,8 +96,32 @@ Contravenient SectieDePolitie::AdaugaAmenda()
     unsigned int codPolitist;
     unsigned int valAmenda;
     unsigned int categorie;
+    cout << "Codul si numele aferent fiecarui agent: " << endl;
+    for(Politist elem : vctPolitist)
+    {
+        cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist() <<endl;
+    }
+    cout<< "Selectati agentul constatator:"<<endl;
+    cin >> codPolitist;
     cout << "Introduceti numele soferului: "<< endl;
     cin >> nume;
+
+    //testez
+    for (Contravenient elem : vctContravenient)
+    {
+        if (nume.compare(elem.GetNumeContravenient()) == 0)
+        {
+            cin >>valAmenda;
+            //Amenzi(codPolitist, elem.GetNumeContravenient(), valAmenda);
+        }
+
+
+        //cout << "!!!!!"<<nume.compare(elem.GetNumeContravenient());
+        //compareOperation(nume, elem.GetNumeContravenient());
+
+
+    }
+
     cout << "Introduceti codul soferului: "<< endl;
     cin >> codContravenient;
     while (!codContravenient)
@@ -98,6 +136,9 @@ Contravenient SectieDePolitie::AdaugaAmenda()
         cout << "Reintroduceti codul: ";
         cin >> codContravenient;
     }
+
+
+
     vctContravenient.push_back(Contravenient{nume, codContravenient});
     Contravenient{nume, codContravenient};
     system ("cls");
@@ -148,7 +189,6 @@ Contravenient SectieDePolitie::AdaugaAmenda()
     }
     return Contravenient{nume, codContravenient};
 }
-
 void SectieDePolitie::StergeAmenda()
 {
     cout << "Stergeti numele contravenientului:" <<endl;

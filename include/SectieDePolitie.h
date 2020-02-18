@@ -13,6 +13,7 @@ class SectieDePolitie
         Politist AdaugaPolitist();
         Politist StergePolitist(); ////intro noua clasa sau mainul o lista de vecetori cupolista
         Contravenient AdaugaAmenda();
+        void compareOperation(string, string);
         void StergeAmenda();
         void AfiseazaAmenziPolitist(); //toate amenzile date de un anumit agent
         void AfiseazaAmenziContravenient(); //toate amenzile luate de un anumit contravenient
