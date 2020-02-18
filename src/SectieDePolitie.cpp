@@ -1,8 +1,9 @@
 #include "SectieDePolitie.h"
+#include "Amenzi.h"
 #include <string>
 #include <iostream>
 using namespace std;
-#include <vector>
+//#include <vector>
 //#include <sstream>
 //#include <algorithm>
 //#include <cctype>
@@ -77,34 +78,59 @@ Contravenient SectieDePolitie::AdaugaAmenda()
 {
     system ("cls");
     string nume;
+    unsigned int codContravenient = 0;
+    unsigned int codPolitist;
+    unsigned int valAmenda;
+    unsigned int categorie;
     cout << "Introduceti numele soferului: "<< endl;
     cin >> nume;
-    unsigned int categorie;
+    cout << "Introduceti codul soferului: "<< endl;
+    cin >> codContravenient;
+    while (!codContravenient)
+    {
+    cout << "Cod invalid! Reintroduceti un cod in afara de: 0, ";
+        for (Contravenient elem : vctContravenient)
+        {
+            cout << elem.GetCodContravenient();
+            cout << ", ";
+        }
+        cout << " " <<endl;
+        cout << "Reintroduceti codul: ";
+        cin >> codContravenient;
+    }
+    vctContravenient.push_back(Contravenient{nume, codContravenient});
+    Contravenient{nume, codContravenient};
     system ("cls");
-    cout << "Selectati categoria: "<< endl;
     cout << "1. bicicleta" <<endl;
     cout << "2. motoreta-motocicleta "<<endl;
     cout << "3. autoturism" << endl;
     cout << "4. camion" << endl;
     cout << "5. tractor "<< endl;
     cout << "0. revenire ecran anterior" << endl;
+    cout << "Selectati categoria: ";
     cin >> categorie;
     switch (categorie)
     {
         case 0: {break;}
-        case 1:
+        case 1: {}
+        case 2: {}
+        case 3: {}
+        case 4: {}
+        case 5: {}
         {
-            unsigned int valAmenda;
             cout << "Precizati valoarea amenzii: ";
             cin >>valAmenda;
-            /*while(cin >> valAmenda)
-            {
-               while(!inputIsNumeric)
-                {
-                    cin>>valAmenda;
-                }
-            }*/
+            while (valAmenda < 0) {cin >>valAmenda;}
+            system("cls");
 
+            cout<< "Selectati agentul constatator:"<<endl;
+            for(Politist elem : vctPolitist)
+            {
+            cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist() <<endl;
+            }
+            cin >> codPolitist;
+            Amenzi(codPolitist, codContravenient, valAmenda);
+            break;
         }
 
         default:
@@ -120,7 +146,7 @@ Contravenient SectieDePolitie::AdaugaAmenda()
             system ("pause");
         }
     }
-    //return Contravenient{nume, codContravenient};//
+    return Contravenient{nume, codContravenient};
 }
 
 void SectieDePolitie::StergeAmenda()
