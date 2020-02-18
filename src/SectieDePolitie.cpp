@@ -2,9 +2,10 @@
 #include <string>
 #include <iostream>
 using namespace std;
-#include <sstream>
-#include <algorithm>
-#include <cctype>
+#include <vector>
+//#include <sstream>
+//#include <algorithm>
+//#include <cctype>
 
 SectieDePolitie::SectieDePolitie()
 {
@@ -29,10 +30,10 @@ Politist SectieDePolitie::AdaugaPolitist()
     cout << "Introduceti numele politistului: "<< endl;
     cin >> nume;
     //https://stackoverflow.com/questions/13440831/how-do-i-check-if-input-is-an-integer-string
-    if (any_of(nume.begin(), nume.end(),isdigit))
+    /*if (any_of(nume.begin(), nume.end(),isdigit))
     {
         cout << "No digits allowed in name\n";
-    }
+    }*/
 
     cout << "Introduceti codul politistului: "<< endl;
     cin >> codPolitist;
@@ -62,6 +63,13 @@ Politist SectieDePolitie::StergePolitist()
     }
     cout << "Selectati numarul agentului de sters: ";
     cin >> codulAgentului;
+    vctPolitist.erase(vctPolitist.begin() + codulAgentului);
+
+    /*for(Politist elem : vctPolitist)
+    {
+        cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist() <<endl;
+    }*/
+
     system("pause");
 }
 
@@ -86,8 +94,19 @@ Contravenient SectieDePolitie::AdaugaAmenda()
         case 0: {break;}
         case 1:
         {
+            unsigned int valAmenda;
             cout << "Precizati valoarea amenzii: ";
+            cin >>valAmenda;
+            /*while(cin >> valAmenda)
+            {
+               while(!inputIsNumeric)
+                {
+                    cin>>valAmenda;
+                }
+            }*/
+
         }
+
         default:
         {
             cout << "Input invalid! Reintroduceti o cifra intre 0 si 5: ";
@@ -101,13 +120,6 @@ Contravenient SectieDePolitie::AdaugaAmenda()
             system ("pause");
         }
     }
-
-    /*while ((categorie < 0)||(categorie >5))
-    {
-
-        cin >> categorie;
-        system ("pause");
-    }*/
     //return Contravenient{nume, codContravenient};//
 }
 
