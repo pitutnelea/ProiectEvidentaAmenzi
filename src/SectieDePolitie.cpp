@@ -66,6 +66,7 @@ Politist SectieDePolitie::StergePolitist()
     cin >> codulAgentului;
     vctPolitist.erase(vctPolitist.begin() + codulAgentului);
 
+
     /*for(Politist elem : vctPolitist)
     {
         cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist() <<endl;
@@ -73,20 +74,6 @@ Politist SectieDePolitie::StergePolitist()
 
     system("pause");
 }
-
-//https://www.geeksforgeeks.org/stdstringcompare-in-c/
-/*void compareOperation(string s1, string s2)
-{
-    // returns a value < 0 (s1 is smaller then s2)
-    if((s1.compare(s2)) < 0)
-        cout << s1 << " is smaller than " << s2 << endl;
-
-    // returns 0(s1, is being comapared to itself)
-    if((s1.compare(s2)) == 0)
-        cout << s1 << " is equal to " << s2 << endl;
-    else
-        cout << "Strings didn't match ";
-}*/
 
 Contravenient SectieDePolitie::AdaugaAmenda()
 {
@@ -105,16 +92,47 @@ Contravenient SectieDePolitie::AdaugaAmenda()
     cin >> codPolitist;
     cout << "Introduceti numele soferului: "<< endl;
     cin >> nume;
+    cout << "Introduceti cod contravenient: ";
+    cin >> codContravenient;
+    unsigned int i;
 
-    //testez
-    for (Contravenient elem : vctContravenient)
+    //for-ul ma ajuta sa verific ca nu am 2 contravenienti cu aleasi nume
+    for (i = 0; i < vctContravenient.size(); i++)
     {
-        if (nume.compare(elem.GetNumeContravenient()) == 0)
+        if (nume.compare(vctContravenient[i].GetNumeContravenient()) == 0)
         {
-            cin >>valAmenda;
-            //Amenzi(codPolitist, elem.GetNumeContravenient(), valAmenda);
+            break;
         }
     }
+
+    if (i = vctContravenient.size())
+    {
+        vctContravenient.push_back(Contravenient{nume, codPolitist});
+    }
+    else if (i < vctContravenient.size())
+    {
+        vctContravenient.push_back(Contravenient{vctContravenient[i].GetNumeContravenient(), vctContravenient[i].GetCodContravenient()});
+    }
+
+
+
+
+    {
+        cout << "Introduceti cod contravenient: ";
+        cin << codContravenient;
+    }
+
+
+    //DUPA IF - obiectul deja exista. Fie l-a gasit, fie l-a creat. El exista si are un cod.
+    //Am nevoie de codContravenient. Cum accesez acel obiect. Imi trebuie doar codul
+    //Vreau sa recupereze codul acelui codContravenient.getCod.
+    //vctParticipant [i]. GetCodContravenient()
+
+
+    //citirea amenzii e dupa for
+     if (i = dimensiunea vectorului vtc contr. size)//nu lam gasit > il adaug ///verfiica daca in urma parcurgeii un for
+     //concluzia am de creat obiect nou?????daca a parcurs tot forul crwat obiect nou
+    //si adaugat in lista de contravenienti ...cu sontr creez si dupa aia fac push back in vector.
 
     cout << "Introduceti codul soferului: "<< endl;
     cin >> codContravenient;
