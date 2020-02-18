@@ -101,7 +101,7 @@ Contravenient SectieDePolitie::AdaugaAmenda()
     {
         cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist() <<endl;
     }
-    cout<< "Selectati agentul constatator:"<<endl;
+    cout<< "Selectati codul agentului constatator:";
     cin >> codPolitist;
     cout << "Introduceti numele soferului: "<< endl;
     cin >> nume;
@@ -114,19 +114,13 @@ Contravenient SectieDePolitie::AdaugaAmenda()
             cin >>valAmenda;
             //Amenzi(codPolitist, elem.GetNumeContravenient(), valAmenda);
         }
-
-
-        //cout << "!!!!!"<<nume.compare(elem.GetNumeContravenient());
-        //compareOperation(nume, elem.GetNumeContravenient());
-
-
     }
 
     cout << "Introduceti codul soferului: "<< endl;
     cin >> codContravenient;
     while (!codContravenient)
     {
-    cout << "Cod invalid! Reintroduceti un cod in afara de: 0, ";
+        cout << "Cod invalid! Reintroduceti un cod in afara de: 0, ";
         for (Contravenient elem : vctContravenient)
         {
             cout << elem.GetCodContravenient();
@@ -136,9 +130,6 @@ Contravenient SectieDePolitie::AdaugaAmenda()
         cout << "Reintroduceti codul: ";
         cin >> codContravenient;
     }
-
-
-
     vctContravenient.push_back(Contravenient{nume, codContravenient});
     Contravenient{nume, codContravenient};
     system ("cls");
@@ -163,17 +154,9 @@ Contravenient SectieDePolitie::AdaugaAmenda()
             cin >>valAmenda;
             while (valAmenda < 0) {cin >>valAmenda;}
             system("cls");
-
-            cout<< "Selectati agentul constatator:"<<endl;
-            for(Politist elem : vctPolitist)
-            {
-            cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist() <<endl;
-            }
-            cin >> codPolitist;
             Amenzi(codPolitist, codContravenient, valAmenda);
             break;
         }
-
         default:
         {
             cout << "Input invalid! Reintroduceti o cifra intre 0 si 5: ";
@@ -187,8 +170,9 @@ Contravenient SectieDePolitie::AdaugaAmenda()
             system ("pause");
         }
     }
-    return Contravenient{nume, codContravenient};
+return Contravenient{nume, codContravenient};
 }
+
 void SectieDePolitie::StergeAmenda()
 {
     cout << "Stergeti numele contravenientului:" <<endl;
