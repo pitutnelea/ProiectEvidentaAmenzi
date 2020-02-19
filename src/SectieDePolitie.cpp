@@ -83,6 +83,7 @@ Contravenient SectieDePolitie::AdaugaAmenda()
     unsigned int codPolitist;
     unsigned int valAmenda;
     unsigned int categorie;
+    unsigned int i;
     cout << "Codul si numele aferent fiecarui agent: " << endl;
     for(Politist elem : vctPolitist)
     {
@@ -90,11 +91,8 @@ Contravenient SectieDePolitie::AdaugaAmenda()
     }
     cout<< "Selectati codul agentului constatator:";
     cin >> codPolitist;
-    cout << "Introduceti numele soferului: "<< endl;
+    cout << "Introduceti numele soferului: ";
     cin >> nume;
-    cout << "Introduceti cod contravenient: ";
-    cin >> codContravenient;
-    unsigned int i;
 
     //for-ul ma ajuta sa verific ca nu am 2 contravenienti cu aleasi nume
     for (i = 0; i < vctContravenient.size(); i++)
@@ -105,37 +103,22 @@ Contravenient SectieDePolitie::AdaugaAmenda()
         }
     }
 
-    if (i = vctContravenient.size())
+    cout << "Precizati valoarea amenzii: ";
+    cin >>valAmenda;
+
+    if (i == (vctContravenient.size()))
     {
-        vctContravenient.push_back(Contravenient{nume, codPolitist});
+        cout << "Introduceti codul soferului: ";
+        cin >> codContravenient;
+        vctContravenient.push_back(Contravenient{nume, codContravenient});
     }
-    else if (i < vctContravenient.size())
+    else if (i < (vctContravenient.size()))
     {
+        cout << "AICI"<<endl;
         vctContravenient.push_back(Contravenient{vctContravenient[i].GetNumeContravenient(), vctContravenient[i].GetCodContravenient()});
     }
 
-
-
-
-    {
-        cout << "Introduceti cod contravenient: ";
-        cin << codContravenient;
-    }
-
-
-    //DUPA IF - obiectul deja exista. Fie l-a gasit, fie l-a creat. El exista si are un cod.
-    //Am nevoie de codContravenient. Cum accesez acel obiect. Imi trebuie doar codul
-    //Vreau sa recupereze codul acelui codContravenient.getCod.
-    //vctParticipant [i]. GetCodContravenient()
-
-
-    //citirea amenzii e dupa for
-     if (i = dimensiunea vectorului vtc contr. size)//nu lam gasit > il adaug ///verfiica daca in urma parcurgeii un for
-     //concluzia am de creat obiect nou?????daca a parcurs tot forul crwat obiect nou
-    //si adaugat in lista de contravenienti ...cu sontr creez si dupa aia fac push back in vector.
-
-    cout << "Introduceti codul soferului: "<< endl;
-    cin >> codContravenient;
+    cout<<"ABC"<<endl;
     while (!codContravenient)
     {
         cout << "Cod invalid! Reintroduceti un cod in afara de: 0, ";
