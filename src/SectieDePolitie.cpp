@@ -133,7 +133,6 @@ Contravenient SectieDePolitie::AdaugaAmenda()
     cout << "5. tractor "<< endl;
     cout << "0. revenire ecran anterior" << endl;
     cout << "Selectati categoria: ";
-    unsigned int ABC;
     cin >> varEnum;
     switch (varEnum)
     {
