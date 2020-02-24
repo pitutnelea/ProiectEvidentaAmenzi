@@ -2,6 +2,7 @@
 #define SECTIEDEPOLITIE_H
 #include "Politist.h"
 #include "Contravenient.h"
+#include "Amenzi.h"
 #include <vector>
 #include <iostream>
 using namespace std;
@@ -11,7 +12,7 @@ class SectieDePolitie
     public:
         SectieDePolitie();
         Politist AdaugaPolitist();
-        Politist StergePolitist(); ////intro noua clasa sau mainul o lista de vecetori cupolista
+        Politist StergePolitist(); ////intro noua clasa sau mainul o lista de vecetori cu o lista
         Contravenient AdaugaAmenda();
         void compareOperation(string, string);
         void StergeAmenda();

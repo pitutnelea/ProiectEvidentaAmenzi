@@ -1,5 +1,4 @@
 #include "SectieDePolitie.h"
-#include "Amenzi.h"
 #include <string>
 #include <iostream>
 using namespace std;
@@ -81,8 +80,8 @@ Contravenient SectieDePolitie::AdaugaAmenda()
     string nume;
     unsigned int codContravenient = 0;
     unsigned int codPolitist;
-    unsigned int valAmenda;
-    unsigned int categorie;
+    double valAmenda;
+    unsigned int varEnum;
     unsigned int i;
     cout << "Codul si numele aferent fiecarui agent: " << endl;
     for(Politist elem : vctPolitist)
@@ -106,20 +105,15 @@ Contravenient SectieDePolitie::AdaugaAmenda()
     cout << "Precizati valoarea amenzii: ";
     cin >>valAmenda;
 
+    //IF - daca numele nu a existat | daca numele a existat
     if (i == (vctContravenient.size()))
     {
+        cout << "NU A EXISTAT" << endl;
         cout << "Introduceti codul soferului: ";
         cin >> codContravenient;
         vctContravenient.push_back(Contravenient{nume, codContravenient});
     }
-    else if (i < (vctContravenient.size()))
-    {
-        cout << "AICI"<<endl;
-        vctContravenient.push_back(Contravenient{vctContravenient[i].GetNumeContravenient(), vctContravenient[i].GetCodContravenient()});
-    }
-
-    cout<<"ABC"<<endl;
-    while (!codContravenient)
+    /*while (codContravenient)
     {
         cout << "Cod invalid! Reintroduceti un cod in afara de: 0, ";
         for (Contravenient elem : vctContravenient)
@@ -130,9 +124,7 @@ Contravenient SectieDePolitie::AdaugaAmenda()
         cout << " " <<endl;
         cout << "Reintroduceti codul: ";
         cin >> codContravenient;
-    }
-    vctContravenient.push_back(Contravenient{nume, codContravenient});
-    Contravenient{nume, codContravenient};
+    }*/
     system ("cls");
     cout << "1. bicicleta" <<endl;
     cout << "2. motoreta-motocicleta "<<endl;
@@ -141,37 +133,34 @@ Contravenient SectieDePolitie::AdaugaAmenda()
     cout << "5. tractor "<< endl;
     cout << "0. revenire ecran anterior" << endl;
     cout << "Selectati categoria: ";
-    cin >> categorie;
-    switch (categorie)
+    unsigned int ABC;
+    cin >> varEnum;
+    switch (varEnum)
     {
+        //sa determin ce categorie este si dupa switch sa creez amenda.
+        //declar var enum inainte de switch ca si tipul de enum
         case 0: {break;}
-        case 1: {}
-        case 2: {}
-        case 3: {}
-        case 4: {}
-        case 5: {}
-        {
-            cout << "Precizati valoarea amenzii: ";
-            cin >>valAmenda;
-            while (valAmenda < 0) {cin >>valAmenda;}
-            system("cls");
-            Amenzi(codPolitist, codContravenient, valAmenda);
-            break;
-        }
+        case bicicleta:{cout << "A-ti ales bicicleta"<<endl;break;}
+        case motoretaMotocicleta: {cout << "A-ti ales motoretaMotocicleta"<<endl; break;}
+        case autoturism: {cout << "A-ti ales autoturism"<<endl; break;}
+        case camion: {cout << "A-ti ales camion"<<endl; break;}
+        case tractor: {cout << "A-ti ales tractor"<<endl; break;}
         default:
         {
             cout << "Input invalid! Reintroduceti o cifra intre 0 si 5: ";
-            cin >> categorie;
-            while ((categorie <0) || (categorie > 5))
+            cin >> varEnum;
+            while ((varEnum <0) || (varEnum > 5))
             {
                 cout << "Input invalid! Reintroduceti o cifra intre 0 si 5: ";
-                cin >>categorie;
+                cin >>varEnum;
             }
             break;
             system ("pause");
         }
     }
-return Contravenient{nume, codContravenient};
+    system("cls");
+    Amenzi{codPolitist, vctContravenient[i].GetCodContravenient(), valAmenda , varEnum};
+    return Contravenient{nume, vctContravenient[i].GetCodContravenient()};
 }
 
 void SectieDePolitie::StergeAmenda()
