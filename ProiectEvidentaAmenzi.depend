@@ -31,13 +31,12 @@
 
 1581936257 d:\cplusplus\proiecte\proiectevidentaamenzi\include\clasahelp.h
 
-1582109382 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\sectiedepolitie.cpp
+1582574273 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\sectiedepolitie.cpp
 	"SectieDePolitie.h"
-	"Amenzi.h"
 	<string>
 	<iostream>
 
-1582571103 d:\cplusplus\proiecte\proiectevidentaamenzi\include\sectiedepolitie.h
+1582574288 d:\cplusplus\proiecte\proiectevidentaamenzi\include\sectiedepolitie.h
 	"Politist.h"
 	"Contravenient.h"
 	"Amenzi.h"

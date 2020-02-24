@@ -162,11 +162,6 @@ Contravenient SectieDePolitie::AdaugaAmenda()
     return Contravenient{nume, vctContravenient[i].GetCodContravenient()};
 }
 
-void SectieDePolitie::StergeAmenda()
-{
-    cout << "Stergeti numele contravenientului:" <<endl;
-}
-
 void SectieDePolitie::AfiseazaAmenziPolitist()
 {
     cout<<"Selectati codul politistului pentru a vedea toate toate amenzile date de acesta: "<<endl;
