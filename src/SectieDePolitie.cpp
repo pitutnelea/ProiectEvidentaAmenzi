@@ -73,16 +73,17 @@ Politist SectieDePolitie::StergePolitist()
 
     system("pause");
 }
-
+double valAmenda;
 Contravenient SectieDePolitie::AdaugaAmenda()
 {
     system ("cls");
     string nume;
     unsigned int codContravenient = 0;
     unsigned int codPolitist;
-    double valAmenda;
+
     unsigned int varEnum;
     unsigned int i;
+    Categorii valCateg;
     cout << "Codul si numele aferent fiecarui agent: " << endl;
     for(Politist elem : vctPolitist)
     {
@@ -139,11 +140,11 @@ Contravenient SectieDePolitie::AdaugaAmenda()
         //sa determin ce categorie este si dupa switch sa creez amenda.
         //declar var enum inainte de switch ca si tipul de enum
         case 0: {break;}
-        case bicicleta:{cout << "A-ti ales bicicleta"<<endl;break;}
-        case motoretaMotocicleta: {cout << "A-ti ales motoretaMotocicleta"<<endl; break;}
-        case autoturism: {cout << "A-ti ales autoturism"<<endl; break;}
-        case camion: {cout << "A-ti ales camion"<<endl; break;}
-        case tractor: {cout << "A-ti ales tractor"<<endl; break;}
+        case 1: {valCateg = bicicleta;  break;}
+        case 2: {valCateg = motoretaMotocicleta; break;}
+        case 3: {valCateg = autoturism; break;}
+        case 4: {valCateg = camion; break;}
+        case 5: {valCateg = tractor; break;}
         default:
         {
             cout << "Input invalid! Reintroduceti o cifra intre 0 si 5: ";
@@ -158,13 +159,35 @@ Contravenient SectieDePolitie::AdaugaAmenda()
         }
     }
     system("cls");
-    Amenzi{codPolitist, vctContravenient[i].GetCodContravenient(), valAmenda , varEnum};
+    Amenzi{codPolitist, vctContravenient[i].GetCodContravenient(), valAmenda , valCateg};
+    vctAmenzi.push_back(Amenzi{valAmenda});
     return Contravenient{nume, vctContravenient[i].GetCodContravenient()};
 }
 
 void SectieDePolitie::AfiseazaAmenziPolitist()
 {
+    unsigned int codulAgentului;
+    cout << "Codul si numele aferent fiecarui agent: " << endl;
+    for(Politist elem : vctPolitist)
+    {
+        cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist() <<endl;
+    }
     cout<<"Selectati codul politistului pentru a vedea toate toate amenzile date de acesta: "<<endl;
+    cin >> codulAgentului;
+    for (Politist codulAgentului : vctPolitist)
+    {
+        for(Amenzi elem: vctAmenzi)
+        {
+            for(Contravenient elem : vctContravenient)
+            {
+                cout << elem.GetCodContravenient()<<". "<< elem.GetNumeContravenient()<<" ";continue;
+            }
+        cout<< elem.GetAmenda();
+        cout<< " "<<endl;
+        }
+
+    }
+    system ("pause");
 }
 
 void SectieDePolitie::AfiseazaAmenziContravenient()

@@ -47,6 +47,12 @@ int main()
                 sectie.AdaugaAmenda();
                 break;
             }
+            case 4:
+            {
+                system("cls");
+                sectie.AfiseazaAmenziPolitist();
+            }
+
             default:
             {
                 system ("cls");
@@ -59,6 +65,19 @@ int main()
     }
 
     return 0;
+
+/*for (Politist codulAgentului : vctPolitist)
+    {
+        for(Contravenient elem : vctContravenient)
+        {
+            cout << elem.GetCodContravenient()<<". "<<elem.GetNumeContravenient()<<" ";
+            for(Amenzi valAmenda: vctAmenzi)
+            {
+                cout<< valAmenda.GetAmenda();
+            }
+            cout<< " "<<endl;
+        }
+    }*/
 }
 
 /*

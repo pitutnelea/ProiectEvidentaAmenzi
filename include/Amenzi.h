@@ -6,10 +6,9 @@ class Amenzi
 {
     public:
         Amenzi(unsigned int, unsigned int, double, Categorii);
+        Amenzi(double);
         void SetAmenda(double amenda){_amenda = amenda;}
         double GetAmenda(){return _amenda;}
-        void SetCategorii(Categorii categorie){_categorie = categorie;}
-        Categorii GetCategorii(){return _categorie;}
         virtual ~Amenzi();
     protected:
 

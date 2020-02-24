@@ -24,6 +24,7 @@ class SectieDePolitie
     private:
         vector <Politist> vctPolitist;
         vector <Contravenient> vctContravenient;
+        vector <Amenzi> vctAmenzi;
 };
 
 #endif // SECTIEDEPOLITIE_H
