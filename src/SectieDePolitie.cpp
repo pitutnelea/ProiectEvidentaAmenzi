@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 using namespace std;
-//#include <vector>
+#include <vector>
 //#include <sstream>
 //#include <algorithm>
 //#include <cctype>
@@ -174,19 +174,19 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
     }
     cout<<"Selectati codul politistului pentru a vedea toate toate amenzile date de acesta: "<<endl;
     cin >> codulAgentului;
-    for (Politist codulAgentului : vctPolitist)
+    for(Amenzi elem : vctAmenzi)
     {
-        for(Amenzi elem: vctAmenzi)
+        if ((elem.GetCodPolitist()) == codulAgentului)
         {
-            for(Contravenient elem : vctContravenient)
+            cout << elem.GetAmenda()<<endl;
+            for (auto it = vctContravenient.cbegin(); it != vctContravenient.end(); ++it)
             {
-                cout << elem.GetCodContravenient()<<". "<< elem.GetNumeContravenient()<<" ";continue;
+                std::cout << *it << std::endl;
             }
-        cout<< elem.GetAmenda();
-        cout<< " "<<endl;
-        }
 
+        }
     }
+
     system ("pause");
 }
 
