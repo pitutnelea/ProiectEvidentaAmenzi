@@ -12,6 +12,7 @@ class Amenzi
         double GetAmenda(){return _amenda;}
         void SetCodPolitist(unsigned int codPolitist){_codPolitist = codPolitist;}
         unsigned int GetCodPolitist() {return _codPolitist;}
+        unsigned int GetCodContrav(){return _codContravenient;}
         virtual ~Amenzi();
     protected:
 

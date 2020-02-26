@@ -174,19 +174,23 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
     }
     cout<<"Selectati codul politistului pentru a vedea toate toate amenzile date de acesta: "<<endl;
     cin >> codulAgentului;
-    for (Contravenient elem : vctContravenient)
+    system("cls");
+    for(Amenzi elemPol : vctAmenzi)
     {
-        cout << elem.GetCodContravenient() << " "<<elem.GetNumeContravenient()<< " ";
-        for(Amenzi elem : vctAmenzi)
+        if ((elemPol.GetCodPolitist()) == codulAgentului)
         {
-            if ((elem.GetCodPolitist()) == codulAgentului)
+            for(Contravenient elemContr : vctContravenient)
             {
-                cout << elem.GetAmenda()<<endl;break;
+                if((elemContr.GetCodContravenient())== elemPol.GetCodContrav())
+                {
+                    cout << elemContr.GetCodContravenient()<<" "<< elemContr.GetNumeContravenient() << " ";
+                }
             }
-
+            cout << elemPol.GetAmenda()<<endl;
         }
+        //cout << elemPol.GetAmenda()<<endl;
     }
-    system ("pause");
+    //system ("pause");
 }
 
 void SectieDePolitie::AfiseazaAmenziContravenient()
