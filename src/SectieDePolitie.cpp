@@ -181,13 +181,11 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
         {
             if ((elem.GetCodPolitist()) == codulAgentului)
             {
-
-                cout << elem.GetAmenda()<<endl;
+                cout << elem.GetAmenda()<<endl;break;
             }
+
         }
     }
-
-
     system ("pause");
 }
 
