@@ -4,11 +4,6 @@ Amenzi::Amenzi(unsigned int codPolitist, unsigned int codContravenient, double a
 {
 }
 
-Amenzi::Amenzi(unsigned int codContravenient, string numeContravenient, double amenda): _codContravenient{codContravenient},_numeContravenient{numeContravenient},_amenda{amenda}
-{
-
-}
-
 Amenzi::~Amenzi()
 {
     //dtor
