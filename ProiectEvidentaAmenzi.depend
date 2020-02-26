@@ -5,10 +5,11 @@
 	<stdlib.h>
 	<iostream>
 
-1582581036 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\amenzi.cpp
+1582740362 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\amenzi.cpp
 	"Amenzi.h"
 
-1582666868 d:\cplusplus\proiecte\proiectevidentaamenzi\include\amenzi.h
+1582740469 d:\cplusplus\proiecte\proiectevidentaamenzi\include\amenzi.h
+	<iostream>
 
 1581936255 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\clasahelp.cpp
 	<iostream>

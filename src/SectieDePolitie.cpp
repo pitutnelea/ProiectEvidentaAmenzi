@@ -160,7 +160,7 @@ Contravenient SectieDePolitie::AdaugaAmenda()
     }
     system("cls");
     Amenzi{codPolitist, vctContravenient[i].GetCodContravenient(), valAmenda , valCateg};
-    vctAmenzi.push_back(Amenzi{valAmenda});
+    vctAmenzi.push_back(Amenzi{vctContravenient[i].GetCodContravenient(),vctContravenient[i].GetNumeContravenient(),valAmenda});
     return Contravenient{nume, vctContravenient[i].GetCodContravenient()};
 }
 
@@ -179,10 +179,7 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
         if ((elem.GetCodPolitist()) == codulAgentului)
         {
             cout << elem.GetAmenda()<<endl;
-            for (auto it = vctContravenient.cbegin(); it != vctContravenient.end(); ++it)
-            {
-                std::cout << *it << std::endl;
-            }
+
 
         }
     }
