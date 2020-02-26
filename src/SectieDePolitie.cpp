@@ -190,7 +190,7 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
         }
         //cout << elemPol.GetAmenda()<<endl;
     }
-    //system ("pause");
+    system ("pause");
 }
 
 void SectieDePolitie::AfiseazaAmenziContravenient()
