@@ -73,7 +73,9 @@ Politist SectieDePolitie::StergePolitist()
 
     system("pause");
 }
+
 double valAmenda;
+double totalAmenziAgent;
 Contravenient SectieDePolitie::AdaugaAmenda()
 {
     system ("cls");
@@ -105,7 +107,7 @@ Contravenient SectieDePolitie::AdaugaAmenda()
 
     cout << "Precizati valoarea amenzii: ";
     cin >>valAmenda;
-
+    totalAmenziAgent += valAmenda;
     //IF - daca numele nu a existat | daca numele a existat
     if (i == (vctContravenient.size()))
     {
@@ -159,8 +161,8 @@ Contravenient SectieDePolitie::AdaugaAmenda()
         }
     }
     system("cls");
-    Amenzi{codPolitist, vctContravenient[i].GetCodContravenient(), valAmenda , valCateg};
-    vctAmenzi.push_back(Amenzi{codPolitist, vctContravenient[i].GetCodContravenient(), valAmenda , valCateg});
+    Amenzi{codPolitist, vctContravenient[i].GetCodContravenient(), valAmenda , valCateg, totalAmenziAgent};
+    vctAmenzi.push_back(Amenzi{codPolitist, vctContravenient[i].GetCodContravenient(), valAmenda , valCateg, totalAmenziAgent});
     return Contravenient{nume, vctContravenient[i].GetCodContravenient()};
 }
 
@@ -188,7 +190,7 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
             }
             cout << elemPol.GetAmenda()<<endl;
         }
-        //cout << elemPol.GetAmenda()<<endl;
+        cout << "Total amenzi: " << elemPol.GetTotalAmenziAgent()<<endl;
     }
     system ("pause");
 }

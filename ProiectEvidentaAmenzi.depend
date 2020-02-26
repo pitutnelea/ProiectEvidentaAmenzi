@@ -5,10 +5,10 @@
 	<stdlib.h>
 	<iostream>
 
-1582741125 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\amenzi.cpp
+1582756132 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\amenzi.cpp
 	"Amenzi.h"
 
-1582751782 d:\cplusplus\proiecte\proiectevidentaamenzi\include\amenzi.h
+1582756518 d:\cplusplus\proiecte\proiectevidentaamenzi\include\amenzi.h
 	<iostream>
 
 1581936255 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\clasahelp.cpp
@@ -32,7 +32,7 @@
 
 1581936257 d:\cplusplus\proiecte\proiectevidentaamenzi\include\clasahelp.h
 
-1582754763 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\sectiedepolitie.cpp
+1582756493 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\sectiedepolitie.cpp
 	"SectieDePolitie.h"
 	<string>
 	<iostream>
