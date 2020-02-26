@@ -176,10 +176,12 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
     cin >> codulAgentului;
     for (Contravenient elem : vctContravenient)
     {
+        cout << elem.GetCodContravenient() << " "<<elem.GetNumeContravenient()<< " ";
         for(Amenzi elem : vctAmenzi)
         {
             if ((elem.GetCodPolitist()) == codulAgentului)
             {
+
                 cout << elem.GetAmenda()<<endl;
             }
         }
