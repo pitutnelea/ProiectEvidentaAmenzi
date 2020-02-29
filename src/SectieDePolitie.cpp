@@ -209,17 +209,25 @@ void SectieDePolitie::AfiseazaAmenziContravenient()
     {
         if ((elem.GetCodContravenient()) == codulContravenientului)
         {
-            cout << elem.GetCodContravenient()<<". "<< elem.GetNumeContravenient() << " ";
+            cout << elem.GetCodContravenient()<<". "<< elem.GetNumeContravenient() << " "<<endl;
             for (Amenzi elemContr : vctAmenzi)
             {
-                cout << elemContr.GetAmenda() << " / ";
+                cout << elemContr.GetAmenda() << " (" ;
+                switch (elemContr.GetCategorie())
+                {
+                    case 1: {cout << "bicicleta";  break;}
+                    case 2: {cout << "motoretaMotocicleta"; break;}
+                    case 3: {cout << "autoturism"; break;}
+                    case 4: {cout << "camion"; break;}
+                    case 5: {cout << "tractor"; break;}
+                }
+                cout<< ") "<<endl;
                 varTotal += (elemContr.GetAmenda());
             }
         }
-        cout << " "<< endl;
-    }
     cout << "Totalul amenzilor luate de contravenientul selectat: " << varTotal<< endl;
     system ("pause");
+    }
 }
 
 void SectieDePolitie::AfisezaSituatieAmenzi()
