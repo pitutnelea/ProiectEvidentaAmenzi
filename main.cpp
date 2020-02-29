@@ -51,8 +51,14 @@ int main()
             {
                 system("cls");
                 sectie.AfiseazaAmenziPolitist();
+                break;
             }
-
+            case 5:
+            {
+                system("cls");
+                sectie.AfiseazaAmenziContravenient();
+                break;
+            }
             default:
             {
                 system ("cls");

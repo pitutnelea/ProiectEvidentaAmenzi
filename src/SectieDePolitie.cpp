@@ -196,7 +196,30 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
 
 void SectieDePolitie::AfiseazaAmenziContravenient()
 {
-    cout<<"Selectati codul contravenientului pentru a vedea toate amenzile luate de acesta"<< endl;
+    for(Contravenient elem : vctContravenient)
+    {
+        cout << elem.GetCodContravenient() <<". "<< elem.GetNumeContravenient() <<endl;
+    }
+    cout<<"Selectati codul contravenientului: ";
+    unsigned int codulContravenientului;
+    cin >> codulContravenientului;
+    double varTotal;
+    system("cls");
+    for (Contravenient elem : vctContravenient)
+    {
+        if ((elem.GetCodContravenient()) == codulContravenientului)
+        {
+            cout << elem.GetCodContravenient()<<". "<< elem.GetNumeContravenient() << " ";
+            for (Amenzi elemContr : vctAmenzi)
+            {
+                cout << elemContr.GetAmenda() << " / ";
+                varTotal += (elemContr.GetAmenda());
+            }
+        }
+        cout << " "<< endl;
+    }
+    cout << "Totalul amenzilor luate de contravenientul selectat: " << varTotal<< endl;
+    system ("pause");
 }
 
 void SectieDePolitie::AfisezaSituatieAmenzi()
