@@ -75,14 +75,12 @@ Politist SectieDePolitie::StergePolitist()
 }
 
 double valAmenda;
-double totalAmenziAgent;
 Contravenient SectieDePolitie::AdaugaAmenda()
 {
     system ("cls");
     string nume;
     unsigned int codContravenient = 0;
     unsigned int codPolitist;
-
     unsigned int varEnum;
     unsigned int i;
     Categorii valCateg;
@@ -107,7 +105,6 @@ Contravenient SectieDePolitie::AdaugaAmenda()
 
     cout << "Precizati valoarea amenzii: ";
     cin >>valAmenda;
-    totalAmenziAgent += valAmenda;
     //IF - daca numele nu a existat | daca numele a existat
     if (i == (vctContravenient.size()))
     {
@@ -161,8 +158,8 @@ Contravenient SectieDePolitie::AdaugaAmenda()
         }
     }
     system("cls");
-    Amenzi{codPolitist, vctContravenient[i].GetCodContravenient(), valAmenda , valCateg, totalAmenziAgent};
-    vctAmenzi.push_back(Amenzi{codPolitist, vctContravenient[i].GetCodContravenient(), valAmenda , valCateg, totalAmenziAgent});
+    Amenzi{codPolitist, vctContravenient[i].GetCodContravenient(), valAmenda , valCateg};
+    vctAmenzi.push_back(Amenzi{codPolitist, vctContravenient[i].GetCodContravenient(), valAmenda , valCateg});
     return Contravenient{nume, vctContravenient[i].GetCodContravenient()};
 }
 
@@ -177,6 +174,7 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
     cout<<"Selectati codul politistului pentru a vedea toate toate amenzile date de acesta: "<<endl;
     cin >> codulAgentului;
     system("cls");
+    double varTotal;
     for(Amenzi elemPol : vctAmenzi)
     {
         if ((elemPol.GetCodPolitist()) == codulAgentului)
@@ -185,13 +183,14 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
             {
                 if((elemContr.GetCodContravenient())== elemPol.GetCodContrav())
                 {
-                    cout << elemContr.GetCodContravenient()<<" "<< elemContr.GetNumeContravenient() << " ";
+                    cout << elemContr.GetCodContravenient()<<". "<< elemContr.GetNumeContravenient() << " ";
                 }
             }
             cout << elemPol.GetAmenda()<<endl;
+            varTotal += (elemPol.GetAmenda());
         }
-        cout << "Total amenzi: " << elemPol.GetTotalAmenziAgent()<<endl;
     }
+    cout << "Total amenzi de agent: " << varTotal<< endl;
     system ("pause");
 }
 
