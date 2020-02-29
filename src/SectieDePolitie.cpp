@@ -190,7 +190,7 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
             varTotal += (elemPol.GetAmenda());
         }
     }
-    cout << "Total amenzi de agent: " << varTotal<< endl;
+    cout << "Totalul amenzilor date de agentul selectat: " << varTotal<< endl;
     system ("pause");
 }
 
