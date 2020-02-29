@@ -70,31 +70,3 @@ int main()
     }
     return 0;
 }
-
-/*
-    for(Amenzi elemPol : vctAmenzi)
-    {
-        if ((elemPol.GetCodPolitist()) == codulAgentului)
-        {
-            for(Contravenient elemContr : vctContravenient)
-            {
-                if((elemContr.GetCodContravenient())== elemPol.GetCodContrav())
-                {
-                    cout << elemContr.GetCodContravenient()<<" "<< elemContr.GetNumeContravenient() << " "<<endl;
-                }
-            }
-            //cout << elemPol.GetAmenda()<<endl;
-        }
-    }
-
-    double varTotal;
-    for(Amenzi elemPol : vctAmenzi)
-    {
-        if ((elemPol.GetCodPolitist()) == codulAgentului)
-        {
-            varTotal += (elemPol.GetAmenda());
-        }
-    }
-    cout << "Total amenzi de agent: " << varTotal<< endl;
-    system ("pause");
-    */
