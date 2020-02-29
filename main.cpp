@@ -59,6 +59,12 @@ int main()
                 sectie.AfiseazaAmenziContravenient();
                 break;
             }
+            case 6:
+            {
+                system("cls");
+                sectie.AfiseazaSituatieAmenzi();
+                break;
+            }
             default:
             {
                 system ("cls");

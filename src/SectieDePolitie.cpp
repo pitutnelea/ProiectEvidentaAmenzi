@@ -230,7 +230,24 @@ void SectieDePolitie::AfiseazaAmenziContravenient()
     }
 }
 
-void SectieDePolitie::AfisezaSituatieAmenzi()
+void SectieDePolitie::AfiseazaSituatieAmenzi()
 {
-    cout<< "Se afiseaza fiecare agent cu totalul amenzilor date: "<<endl;
+    for (Politist elem : vctPolitist)
+    {
+        cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist();
+        for(Amenzi elemPol : vctAmenzi)
+        {
+            cout<<" "<<(elemPol.GetAmenda())<< " ;";
+        }
+        cout << " " <<endl;
+    }
+    double varTotal;
+    for(Amenzi elemPol : vctAmenzi)
+    {
+        varTotal += (elemPol.GetAmenda());
+    }
+    cout << "Totalul amenzilor date de toti agentii: " << varTotal<< endl;
+    system ("pause");
+
+
 }
