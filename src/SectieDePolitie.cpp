@@ -53,25 +53,36 @@ Politist SectieDePolitie::AdaugaPolitist()
     return Politist{nume, codPolitist};
 }
 
-Politist SectieDePolitie::StergePolitist()
+void SectieDePolitie::StergePolitist()
 {
     unsigned int codulAgentului;
     cout << "Codul si numele aferent fiecarui agent: " << endl;
-    for(Politist elem : vctPolitist)
+    /*for(Politist elem : vctPolitist)
     {
         cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist() <<endl;
     }
     cout << "Selectati numarul agentului de sters: ";
     cin >> codulAgentului;
-    vctPolitist.erase(vctPolitist.begin() + codulAgentului);
+    vctPolitist.erase(vctPolitist.begin() + codulAgentului);*/
 
+
+    for (Amenzi elemPol : vctAmenzi)
+    {
+        for (Politist elem : vctPolitist)
+        {
+            if((elem.GetCodPolitist()) == codulAgentului)
+            {
+                vctPolitist.erase(vctPolitist.begin() + elemPol.GetCodPolitist());
+            }
+        }
+    }
 
     /*for(Politist elem : vctPolitist)
     {
         cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist() <<endl;
     }*/
 
-    system("pause");
+    //system("pause");
 }
 
 double valAmenda;
