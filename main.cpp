@@ -79,24 +79,19 @@ int main()
 
 
 
-/*void SectieDePolitie::AfiseazaSituatieAmenzi()
-{
-    for (Politist elem : vctPolitist)
-    {
-        cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist();
-        for(Amenzi elemPol : vctAmenzi)
-        {
-            cout<<" "<<(elemPol.GetAmenda())<< " ;";
-        }
-        cout << " " <<endl;
-    }
-    double varTotal;
+/*double varTotal;
     for(Amenzi elemPol : vctAmenzi)
     {
+        for(Politist elem : vctPolitist)
+        {
+            if((elemPol.GetCodPolitist())==(elem.GetCodPolitist()))
+            {
+                cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist()<< " ";
+            }
+        }
+        //cout << elemPol.GetAmenda() <<endl;
         varTotal += (elemPol.GetAmenda());
+        cout <<varTotal<<endl;continue;
     }
     cout << "Totalul amenzilor date de toti agentii: " << varTotal<< endl;
-    system ("pause");
-
-
-}*/
+    system ("pause");*/
