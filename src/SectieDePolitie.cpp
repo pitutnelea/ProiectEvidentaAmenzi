@@ -232,22 +232,25 @@ void SectieDePolitie::AfiseazaAmenziContravenient()
 
 void SectieDePolitie::AfiseazaSituatieAmenzi()
 {
-    for (Politist elem : vctPolitist)
-    {
-        cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist();
-        for(Amenzi elemPol : vctAmenzi)
-        {
-            cout<<" "<<(elemPol.GetAmenda())<< " ;";
-        }
-        cout << " " <<endl;
-    }
     double varTotal;
     for(Amenzi elemPol : vctAmenzi)
     {
+        for(Politist elem : vctPolitist)
+        {
+            cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist();
+        }
+        cout << (elemPol.GetAmenda())<<endl;
         varTotal += (elemPol.GetAmenda());
     }
     cout << "Totalul amenzilor date de toti agentii: " << varTotal<< endl;
     system ("pause");
 
+
+
+    /*for(Amenzi elemPol : vctAmenzi)
+    {
+        varTotal += (elemPol.GetAmenda());
+    }
+    cout << "Totalul amenzilor date de toti agentii: " << varTotal<< endl;*/
 
 }
