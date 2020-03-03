@@ -57,25 +57,13 @@ void SectieDePolitie::StergePolitist()
 {
     unsigned int codulAgentului;
     cout << "Codul si numele aferent fiecarui agent: " << endl;
-    /*for(Politist elem : vctPolitist)
+    for(Politist elem : vctPolitist)
     {
         cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist() <<endl;
     }
     cout << "Selectati numarul agentului de sters: ";
     cin >> codulAgentului;
-    vctPolitist.erase(vctPolitist.begin() + codulAgentului);*/
-
-
-    for (Amenzi elemPol : vctAmenzi)
-    {
-        for (Politist elem : vctPolitist)
-        {
-            if((elem.GetCodPolitist()) == codulAgentului)
-            {
-                vctPolitist.erase(vctPolitist.begin() + elemPol.GetCodPolitist());
-            }
-        }
-    }
+    vctPolitist.erase(vctPolitist.begin() + codulAgentului);
 
     /*for(Politist elem : vctPolitist)
     {
@@ -258,4 +246,29 @@ void SectieDePolitie::AfiseazaSituatieAmenzi()
     }
     cout << "Totalul amenzilor date de toti agentii: " << varTotal<< endl;
     system ("pause");
+
+    /*double varTotal;
+    for(Amenzi elemPol : vctAmenzi)
+    {
+        for(Politist elem : vctPolitist)
+        {
+            cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist()<< " "<<endl;
+            if((elemPol.GetCodPolitist())==(elem.GetCodPolitist()))
+            {
+
+                for(Contravenient elemContr : vctContravenient)
+                {
+                    if ((elemContr.GetCodContravenient())== (elemPol.GetCodContrav()))
+                    {
+                        {
+                            varTotal += (elemPol.GetAmenda());
+                        }
+                    }
+                }
+            }
+        }
+    }
+    cout<<varTotal<<endl;
+    cout << "Totalul amenzilor date de toti agentii: " << varTotal<< endl;
+    system ("pause");*/
 }

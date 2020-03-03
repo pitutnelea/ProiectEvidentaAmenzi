@@ -78,8 +78,10 @@ int main()
 }
 
 
-
-/*double varTotal;
+/*
+void SectieDePolitie::AfiseazaSituatieAmenzi()
+{
+    double varTotal;
     for(Amenzi elemPol : vctAmenzi)
     {
         for(Politist elem : vctPolitist)
@@ -89,9 +91,9 @@ int main()
                 cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist()<< " ";
             }
         }
-        //cout << elemPol.GetAmenda() <<endl;
+        cout << elemPol.GetAmenda() <<endl;
         varTotal += (elemPol.GetAmenda());
-        cout <<varTotal<<endl;continue;
     }
     cout << "Totalul amenzilor date de toti agentii: " << varTotal<< endl;
-    system ("pause");*/
+    system ("pause");
+}*/
