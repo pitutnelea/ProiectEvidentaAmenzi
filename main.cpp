@@ -76,24 +76,29 @@ int main()
     }
     return 0;
 }
-
-
-/*
-void SectieDePolitie::AfiseazaSituatieAmenzi()
-{
+    /*
     double varTotal;
     for(Amenzi elemPol : vctAmenzi)
     {
         for(Politist elem : vctPolitist)
         {
+            cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist()<< " "<<endl;
             if((elemPol.GetCodPolitist())==(elem.GetCodPolitist()))
             {
-                cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist()<< " ";
+
+                for(Contravenient elemContr : vctContravenient)
+                {
+                    if ((elemContr.GetCodContravenient())== (elemPol.GetCodContrav()))
+                    {
+                        {
+                            varTotal += (elemPol.GetAmenda());
+                        }
+                    }
+                }
             }
         }
-        cout << elemPol.GetAmenda() <<endl;
-        varTotal += (elemPol.GetAmenda());
     }
+    cout<<varTotal<<endl;
     cout << "Totalul amenzilor date de toti agentii: " << varTotal<< endl;
     system ("pause");
-}*/
+    */
