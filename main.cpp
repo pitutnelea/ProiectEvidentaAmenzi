@@ -76,3 +76,25 @@ int main()
     }
     return 0;
 }
+
+/*
+void SectieDePolitie::AfiseazaSituatieAmenzi()
+{
+    double varTotal;
+    for(Politist elem : vctPolitist)
+    {
+        double varPartial = 0;
+        for(Amenzi elemPol : vctAmenzi)
+        {
+            if ((elemPol.GetCodPolitist())== (elem.GetCodPolitist()))
+            {
+                varPartial += (elemPol.GetAmenda());
+            }
+        }
+        cout << elem.GetCodPolitist() <<". " << elem.GetNumePolitist()<< " "<<varPartial<<endl;
+        varTotal += varPartial;
+    }
+    cout << "Totalul amenzilor date de toti agentii: " << varTotal<< endl;
+    system ("pause");
+}
+*/

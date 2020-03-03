@@ -1,8 +1,11 @@
 #include "SectieDePolitie.h"
 #include <string>
 #include <iostream>
-using namespace std;
 #include <vector>
+#include <algorithm>
+#include <cmath>
+using namespace std;
+
 //#include <sstream>
 //#include <algorithm>
 //#include <cctype>
@@ -157,6 +160,10 @@ Contravenient SectieDePolitie::AdaugaAmenda()
         }
     }
     system("cls");
+
+    //Amenzi{valAmenda};
+    //vctSituatieAmenzi.push_back(Amenzi{valAmenda});
+
     Amenzi{codPolitist, vctContravenient[i].GetCodContravenient(), valAmenda , valCateg};
     vctAmenzi.push_back(Amenzi{codPolitist, vctContravenient[i].GetCodContravenient(), valAmenda , valCateg});
     return Contravenient{nume, vctContravenient[i].GetCodContravenient()};
@@ -240,11 +247,26 @@ void SectieDePolitie::AfiseazaSituatieAmenzi()
             if ((elemPol.GetCodPolitist())== (elem.GetCodPolitist()))
             {
                 varPartial += (elemPol.GetAmenda());
+                Amenzi{elemPol.GetAmenda()};
+                vctSituatieAmenzi.push_back(Amenzi{elemPol.GetAmenda()});
             }
         }
         cout << elem.GetCodPolitist() <<". " << elem.GetNumePolitist()<< " "<<varPartial<<endl;
         varTotal += varPartial;
     }
     cout << "Totalul amenzilor date de toti agentii: " << varTotal<< endl;
+
+    /*for(Amenzi elem : vctSituatieAmenzi)
+    {
+        cout << elem.GetAmenda() <<endl;
+    }*/
+
+    // Sort the vector in descending order
+    sort(vctSituatieAmenzi.begin(), vctSituatieAmenzi.end(), greater<double>varTotal);
+    for (int i = 0; i < vctSituatieAmenzi.size(); i++)
+    {
+        cout << (vctSituatieAmenzi[i]) <<endl;
+    }
+
     system ("pause");
 }

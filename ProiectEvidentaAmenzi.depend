@@ -1,14 +1,14 @@
 # depslib dependency file v1.0
-1583260622 source:d:\cplusplus\proiecte\proiectevidentaamenzi\main.cpp
+1583272012 source:d:\cplusplus\proiecte\proiectevidentaamenzi\main.cpp
 	"Amenzi.h"
 	"SectieDePolitie.h"
 	<stdlib.h>
 	<iostream>
 
-1582759134 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\amenzi.cpp
+1583272356 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\amenzi.cpp
 	"Amenzi.h"
 
-1583016243 d:\cplusplus\proiecte\proiectevidentaamenzi\include\amenzi.h
+1583272356 d:\cplusplus\proiecte\proiectevidentaamenzi\include\amenzi.h
 	<iostream>
 
 1581936255 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\clasahelp.cpp
@@ -32,13 +32,13 @@
 
 1581936257 d:\cplusplus\proiecte\proiectevidentaamenzi\include\clasahelp.h
 
-1583270155 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\sectiedepolitie.cpp
+1583272303 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\sectiedepolitie.cpp
 	"SectieDePolitie.h"
 	<string>
 	<iostream>
 	<vector>
 
-1583186806 d:\cplusplus\proiecte\proiectevidentaamenzi\include\sectiedepolitie.h
+1583272012 d:\cplusplus\proiecte\proiectevidentaamenzi\include\sectiedepolitie.h
 	"Politist.h"
 	"Contravenient.h"
 	"Amenzi.h"

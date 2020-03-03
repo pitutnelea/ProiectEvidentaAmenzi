@@ -5,6 +5,11 @@ Amenzi::Amenzi(unsigned int codPolitist, unsigned int codContravenient, double a
     //ctor
 }
 
+Amenzi::Amenzi(double amenda) : _amenda{amenda}
+{
+
+}
+
 Amenzi::~Amenzi()
 {
     //dtor
