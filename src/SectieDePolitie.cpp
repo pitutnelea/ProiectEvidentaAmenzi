@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <cmath>
 using namespace std;
+#include <ostream>
 
 //#include <sstream>
 //#include <algorithm>
@@ -236,6 +237,7 @@ void SectieDePolitie::AfiseazaAmenziContravenient()
     }
 }
 
+
 void SectieDePolitie::AfiseazaSituatieAmenzi()
 {
     double varTotal;
@@ -256,17 +258,26 @@ void SectieDePolitie::AfiseazaSituatieAmenzi()
     }
     cout << "Totalul amenzilor date de toti agentii: " << varTotal<< endl;
 
-    /*for(Amenzi elem : vctSituatieAmenzi)
+    for(Amenzi elem : vctSituatieAmenzi)
     {
         cout << elem.GetAmenda() <<endl;
-    }*/
-
-    // Sort the vector in descending order
-    sort(vctSituatieAmenzi.begin(), vctSituatieAmenzi.end(), greater<double>varTotal);
-    for (int i = 0; i < vctSituatieAmenzi.size(); i++)
-    {
-        cout << (vctSituatieAmenzi[i]) <<endl;
     }
+
+
 
     system ("pause");
 }
+
+/*
+    for(const auto &i: vctSituatieAmenzi)
+        cout << i <<endl;
+        sort(vctSituatieAmenzi.begin(), vctSituatieAmenzi.end());
+    for (const auto &i: vctSituatieAmenzi)
+        cout << i << ' '<<endl;
+
+
+    // Sort the vector in descending order
+    sort(vctSituatieAmenzi.begin(), vctSituatieAmenzi.end(), wayToSort);
+    for (int i = 0; i < vctSituatieAmenzi.size(); i++)
+    {
+*/
