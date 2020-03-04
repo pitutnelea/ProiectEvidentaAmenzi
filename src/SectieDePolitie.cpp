@@ -81,8 +81,13 @@ void SectieDePolitie::StergePolitist()
     {
         if ((elemPol.GetCodPolitist()) == codulAgentului)
         {
-            cout <<elemPol.GetAmenda();
-            elemPol.SetCodPolitist(1);
+            for (Politist elem : vctPolitist)
+            {
+                if((elem.GetCodPolitist()) == (elemPol.GetCodPolitist()))
+                {
+                    elem.SetCodPolitist(0);
+                }
+            }
         }
     }
 

@@ -4,7 +4,7 @@
 	<ActiveTarget name="Debug" />
 	<File name="src\SectieDePolitie.cpp" open="1" top="1" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="8093" topLine="244" />
+			<Cursor1 position="2439" topLine="71" />
 		</Cursor>
 	</File>
 	<File name="src\Politist.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -24,12 +24,12 @@
 	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1922" topLine="76" />
+			<Cursor1 position="2253" topLine="65" />
 		</Cursor>
 	</File>
 	<File name="include\SectieDePolitie.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="730" topLine="8" />
+			<Cursor1 position="762" topLine="8" />
 		</Cursor>
 	</File>
 	<File name="include\Politist.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -44,7 +44,7 @@
 	</File>
 	<File name="include\Amenzi.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="278" topLine="6" />
+			<Cursor1 position="550" topLine="6" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
