@@ -67,14 +67,26 @@ void SectieDePolitie::StergePolitist()
     }
     cout << "Selectati numarul agentului de sters: ";
     cin >> codulAgentului;
-    vctPolitist.erase(vctPolitist.begin() + codulAgentului);
-
-    /*for(Politist elem : vctPolitist)
+    for(auto it = vctPolitist.begin(); it != vctPolitist.end(); ++it)
     {
-        cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist() <<endl;
-    }*/
+        if ((it->GetCodPolitist())== codulAgentului)
+        {
+            vctPolitist.erase(it);
+            //cand sterg un element, toate elementele aflate dupa elementul sters se muta mai in fata cu o pozitie
+            --it;
+        }
+    }
 
-    //system("pause");
+    for(Amenzi elemPol : vctAmenzi)
+    {
+        if ((elemPol.GetCodPolitist()) == codulAgentului)
+        {
+            cout <<elemPol.GetAmenda();
+            elemPol.SetCodPolitist(1);
+        }
+    }
+
+    system("pause");
 }
 
 double valAmenda;
@@ -161,10 +173,6 @@ Contravenient SectieDePolitie::AdaugaAmenda()
         }
     }
     system("cls");
-
-    //Amenzi{valAmenda};
-    //vctSituatieAmenzi.push_back(Amenzi{valAmenda});
-
     Amenzi{codPolitist, vctContravenient[i].GetCodContravenient(), valAmenda , valCateg};
     vctAmenzi.push_back(Amenzi{codPolitist, vctContravenient[i].GetCodContravenient(), valAmenda , valCateg});
     return Contravenient{nume, vctContravenient[i].GetCodContravenient()};
@@ -258,16 +266,18 @@ void SectieDePolitie::AfiseazaSituatieAmenzi()
     }
     cout << "Totalul amenzilor date de toti agentii: " << varTotal<< endl;
 
-    for(Amenzi elem : vctSituatieAmenzi)
+
+    /*for(Amenzi elem : vctSituatieAmenzi)
     {
         cout << elem.GetAmenda() <<endl;
-    }
-
-
+    }*/
 
     system ("pause");
 }
 
+
+//Înțeleg de ce ai pus elemente de tip Amenzi în vector
+//Că așa ai și codul polițistului nu doar totalul amenzilor?
 /*
     for(const auto &i: vctSituatieAmenzi)
         cout << i <<endl;

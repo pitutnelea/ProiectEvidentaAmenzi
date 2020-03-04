@@ -77,24 +77,12 @@ int main()
     return 0;
 }
 
-/*
-void SectieDePolitie::AfiseazaSituatieAmenzi()
-{
-    double varTotal;
-    for(Politist elem : vctPolitist)
+   /* for(auto it = vctPolitist.begin(); it != vctPolitist.end(); ++it)
     {
-        double varPartial = 0;
-        for(Amenzi elemPol : vctAmenzi)
+        if ((it->GetCodPolitist())== codulAgentului)
         {
-            if ((elemPol.GetCodPolitist())== (elem.GetCodPolitist()))
-            {
-                varPartial += (elemPol.GetAmenda());
-            }
+            vctPolitist.erase(it);
+            //cand sterg un element, toate elementele aflate dupa elementul sters se muta mai in fata cu o pozitie
+            --it;
         }
-        cout << elem.GetCodPolitist() <<". " << elem.GetNumePolitist()<< " "<<varPartial<<endl;
-        varTotal += varPartial;
-    }
-    cout << "Totalul amenzilor date de toti agentii: " << varTotal<< endl;
-    system ("pause");
-}
-*/
+    }*/
