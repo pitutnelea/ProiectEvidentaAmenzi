@@ -75,7 +75,7 @@ void SectieDePolitie::StergePolitist()
             break;
         }
     }
-
+    //prin referinta se modifica originalul
     for(Amenzi &elemPol : vctAmenzi)
     {
         if ((elemPol.GetCodPolitist()) == codulAgentului)
