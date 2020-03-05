@@ -76,13 +76,3 @@ int main()
     }
     return 0;
 }
-
-   /* for(auto it = vctPolitist.begin(); it != vctPolitist.end(); ++it)
-    {
-        if ((it->GetCodPolitist())== codulAgentului)
-        {
-            vctPolitist.erase(it);
-            //cand sterg un element, toate elementele aflate dupa elementul sters se muta mai in fata cu o pozitie
-            --it;
-        }
-    }*/

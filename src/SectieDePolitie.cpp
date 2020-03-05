@@ -72,22 +72,15 @@ void SectieDePolitie::StergePolitist()
         if ((it->GetCodPolitist())== codulAgentului)
         {
             vctPolitist.erase(it);
-            //cand sterg un element, toate elementele aflate dupa elementul sters se muta mai in fata cu o pozitie
-            --it;
+            break;
         }
     }
 
-    for(Amenzi elemPol : vctAmenzi)
+    for(Amenzi &elemPol : vctAmenzi)
     {
         if ((elemPol.GetCodPolitist()) == codulAgentului)
         {
-            for (Politist elem : vctPolitist)
-            {
-                if((elem.GetCodPolitist()) == (elemPol.GetCodPolitist()))
-                {
-                    elem.SetCodPolitist(0);
-                }
-            }
+            elemPol.SetCodPolitist(0);
         }
     }
 
