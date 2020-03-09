@@ -37,10 +37,13 @@ int main()
             {
                 system ("cls");
                 ofstream outFisAgenti("Agenti.txt");
-                for (Politist sectie: vctPolitist)
+                //vector <Politist> vctPolitist;
+                //stringstream out;
+                for (std::const auto &elem : vctPolitist)
                 {
-                    sectie.Export(outFisAgenti);
+                    elem.ExportAgenti
                 }
+
                 system("pause");
                 break;
             }
