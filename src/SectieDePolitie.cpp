@@ -271,7 +271,6 @@ void SectieDePolitie::AfiseazaSituatieAmenzi()
     }*/
 
     system ("pause");
-}
 
 
 //Înțeleg de ce ai pus elemente de tip Amenzi în vector
@@ -289,3 +288,9 @@ void SectieDePolitie::AfiseazaSituatieAmenzi()
     for (int i = 0; i < vctSituatieAmenzi.size(); i++)
     {
 */
+}
+
+/*void SectieDePolitie::Export(ostream& out)
+{
+     out << vctPolitist << " " << vctContravenient << " " << vctAmenzi << " " << vctSituatieAmenzi;
+}*/

@@ -7,6 +7,7 @@ using namespace std;
 class Contravenient
 {
     public:
+        Contravenient();
         Contravenient(string, unsigned int);
         void SetNumeContravenient(string numeContravenient){_numeContravenient = numeContravenient;}
         string GetNumeContravenient() {return _numeContravenient;}

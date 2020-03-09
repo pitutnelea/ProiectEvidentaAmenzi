@@ -7,6 +7,7 @@ enum Categorii{bicicleta = 1, motoretaMotocicleta, autoturism, camion, tractor};
 class Amenzi
 {
     public:
+        Amenzi();
         Amenzi(unsigned int, unsigned int, double, Categorii);
         Amenzi(double);
         void SetAmenda(double amenda){_amenda = amenda;}
