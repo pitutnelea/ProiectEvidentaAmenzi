@@ -20,9 +20,10 @@
 	"Contravenient.h"
 	<iostream>
 
-1583778564 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\politist.cpp
+1583783045 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\politist.cpp
 	"Politist.h"
 	<iostream>
+	<fstream>
 
 1583782885 d:\cplusplus\proiecte\proiectevidentaamenzi\include\politist.h
 	<string>
@@ -34,14 +35,13 @@
 
 1581936257 d:\cplusplus\proiecte\proiectevidentaamenzi\include\clasahelp.h
 
-1583781131 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\sectiedepolitie.cpp
+1583782909 source:d:\cplusplus\proiecte\proiectevidentaamenzi\src\sectiedepolitie.cpp
 	"SectieDePolitie.h"
 	<string>
 	<iostream>
 	<vector>
 	<algorithm>
 	<cmath>
-	<ostream>
 
 1583782885 d:\cplusplus\proiecte\proiectevidentaamenzi\include\sectiedepolitie.h
 	"Politist.h"

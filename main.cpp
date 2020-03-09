@@ -5,6 +5,7 @@
 using namespace std;
 #include <fstream>
 #include <string>
+#include <sstream>
 
 void Meniu()
 {
@@ -39,6 +40,18 @@ int main()
                 myfile << "The content of the file.\n"; // add some words to the file
                 myfile.close(); // i close the file, to avoid memory leaks.
                 system ("pause");
+
+                //numarare linii din fisier
+                ifstream myfile("agenti.txt");
+                unsigned short nrLinii = 0;
+                while(!myfile.eof())
+                {
+                    char  buff[20];
+                    myfile.getline(buff,20); // citesc ca sa treaca cursorul la ultimul rand, buff e ultima linie citita
+                    ++nrLinii;
+                }
+                cout<<nrLinii<<endl;
+
                 break;
             }
             case 1:

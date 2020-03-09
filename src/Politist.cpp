@@ -1,7 +1,7 @@
 #include "Politist.h"
 #include <iostream>
 using namespace std;
-#include <ostream>
+#include <fstream>  // iclude i si o
 
 Politist::Politist()
 {
