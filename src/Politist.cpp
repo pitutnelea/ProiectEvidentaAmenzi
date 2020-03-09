@@ -1,6 +1,7 @@
 #include "Politist.h"
 #include <iostream>
 using namespace std;
+#include <ostream>
 
 Politist::Politist()
 {
@@ -15,4 +16,9 @@ Politist::Politist(string numePolitist, unsigned int codPolitist):_numePolitist{
 Politist::~Politist()
 {
     //dtor
+}
+
+void Politist::Export(ostream& out)
+{
+     out << _codPolitist << " " << _numePolitist;
 }

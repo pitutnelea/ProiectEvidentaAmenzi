@@ -35,9 +35,9 @@ int main()
             {
                 system ("cls");
                 ofstream myfile; //myfile is an object wich allows me to create or to display files from my computer
-                myfile.open("newfile.txt"); // to open the file from my computer, or to create it and open
+                myfile.open("agenti.txt"); // to open the file from my computer, or to create it and open
                 myfile << "The content of the file.\n"; // add some words to the file
-                myfile.close();
+                myfile.close(); // i close the file, to avoid memory leaks.
                 system ("pause");
                 break;
             }

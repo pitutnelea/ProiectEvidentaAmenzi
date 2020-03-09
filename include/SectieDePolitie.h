@@ -17,7 +17,6 @@ class SectieDePolitie
         void AfiseazaAmenziPolitist(); //toate amenzile date de un anumit agent
         void AfiseazaAmenziContravenient(); //toate amenzile luate de un anumit contravenient
         void AfiseazaSituatieAmenzi(); // afisez fiecare agent cu totalul amenzilor date
-        //void Export(std::ostream&);
         virtual ~SectieDePolitie();
 
     protected:

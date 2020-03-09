@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <cmath>
 using namespace std;
-#include <ostream>
+
 
 //#include <sstream>
 //#include <algorithm>
@@ -289,8 +289,3 @@ void SectieDePolitie::AfiseazaSituatieAmenzi()
     {
 */
 }
-
-/*void SectieDePolitie::Export(ostream& out)
-{
-     out << vctPolitist << " " << vctContravenient << " " << vctAmenzi << " " << vctSituatieAmenzi;
-}*/
