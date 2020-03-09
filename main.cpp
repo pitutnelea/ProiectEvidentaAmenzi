@@ -5,7 +5,7 @@
 using namespace std;
 #include <fstream>
 #include <string>
-#include <sstream>
+#include <strstream>
 
 void Meniu()
 {
@@ -35,23 +35,39 @@ int main()
             case 0:
             {
                 system ("cls");
-                ofstream myfile; //myfile is an object wich allows me to create or to display files from my computer
-                myfile.open("agenti.txt"); // to open the file from my computer, or to create it and open
-                myfile << "The content of the file.\n"; // add some words to the file
-                myfile.close(); // i close the file, to avoid memory leaks.
-                system ("pause");
+                ofstream outmyfile; //myfile is an object wich allows me to create or to display files from my computer
+                outmyfile.open("agenti.txt"); // to open the file from my computer, or to create it and open
+                outmyfile << "The content of the file.\n"; // add some words to the file
+                outmyfile.close(); // i close the file, to avoid memory leaks.
 
                 //numarare linii din fisier
-                ifstream myfile("agenti.txt");
+                ifstream inmyfile("agenti.txt");
                 unsigned short nrLinii = 0;
-                while(!myfile.eof())
+                while(!inmyfile.eof())
                 {
-                    char  buff[20];
-                    myfile.getline(buff,20); // citesc ca sa treaca cursorul la ultimul rand, buff e ultima linie citita
+                    char buff[20];
+                    inmyfile.getline(buff,20); // citesc ca sa treaca cursorul la ultimul rand, buff e ultima linie citita
                     ++nrLinii;
                 }
+                system("pause");
                 cout<<nrLinii<<endl;
+                inmyfile.seekg(0); // mut cursorul la inceput de fisier doar pt streamul de output
 
+                while(!inmyfile.eof())
+                {
+                    char buff[20];
+                    inmyfile.getline(buff,20);
+                    //citirea din fisier
+                    stringstream ss;
+                    ss << buff; // inserez bufferul in stringstreamul ss
+                    for (Politist elem: vctPolitist) //parcurg fiecare element din vector si afisez la consola membrii lui
+                    {
+                        elem.Export(cout);
+                        cout << endl;
+                    }
+                }
+                inmyfile.close();
+                system("pause");
                 break;
             }
             case 1:
