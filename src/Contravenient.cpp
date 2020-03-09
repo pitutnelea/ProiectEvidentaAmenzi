@@ -16,3 +16,8 @@ Contravenient::~Contravenient()
 {
     //dtor
 }
+
+void Contravenient::ExportContravenient(ostream& out)
+{
+    out << _codContravenient << " " << _numeContravenient;
+}

@@ -16,6 +16,7 @@ class Amenzi
         unsigned int GetCodPolitist() {return _codPolitist;}
         unsigned int GetCodContrav(){return _codContravenient;}
         Categorii GetCategorie(){return _categorie;}
+        void ExportAmenzi(std::ostream&);
         virtual ~Amenzi();
     protected:
 

@@ -13,6 +13,7 @@ class Contravenient
         string GetNumeContravenient() {return _numeContravenient;}
         void SetCodContravenient(unsigned int codContravenient){_codContravenient = codContravenient;}
         unsigned int GetCodContravenient() {return _codContravenient;}
+        void ExportContravenient(std::ostream&);
         virtual ~Contravenient();
 
     protected:

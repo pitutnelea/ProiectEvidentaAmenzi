@@ -6,6 +6,8 @@ using namespace std;
 #include <fstream>
 #include <string>
 #include <strstream>
+#include "Politist.h"
+//#include <vector>
 
 void Meniu()
 {
@@ -29,44 +31,19 @@ int main()
     {
         Meniu();
         cin >> nrintrodus;
-
         switch (nrintrodus)
         {
             case 0:
             {
                 system ("cls");
-                ofstream outmyfile; //myfile is an object wich allows me to create or to display files from my computer
-                outmyfile.open("agenti.txt"); // to open the file from my computer, or to create it and open
-                outmyfile << "The content of the file.\n"; // add some words to the file
-                outmyfile.close(); // i close the file, to avoid memory leaks.
-
-                //numarare linii din fisier
-                ifstream inmyfile("agenti.txt");
-                unsigned short nrLinii = 0;
-                while(!inmyfile.eof())
+                ofstream outFisAgenti("Agenti.txt");
+                vector <Politist> vctPolitist;
+                stringstream out;
+                for (const auto &elem : vctPolitist)
                 {
-                    char buff[20];
-                    inmyfile.getline(buff,20); // citesc ca sa treaca cursorul la ultimul rand, buff e ultima linie citita
-                    ++nrLinii;
+                    elem.ExportAgenti
                 }
-                system("pause");
-                cout<<nrLinii<<endl;
-                inmyfile.seekg(0); // mut cursorul la inceput de fisier doar pt streamul de output
 
-                while(!inmyfile.eof())
-                {
-                    char buff[20];
-                    inmyfile.getline(buff,20);
-                    //citirea din fisier
-                    stringstream ss;
-                    ss << buff; // inserez bufferul in stringstreamul ss
-                    for (Politist elem: vctPolitist) //parcurg fiecare element din vector si afisez la consola membrii lui
-                    {
-                        elem.Export(cout);
-                        cout << endl;
-                    }
-                }
-                inmyfile.close();
                 system("pause");
                 break;
             }
@@ -117,3 +94,47 @@ int main()
     }
     return 0;
 }
+
+/*
+            case 0:
+            {
+                system ("cls");
+                ofstream outmyfile; //myfile is an object wich allows me to create or to display files from my computer
+                outmyfile.open("agenti.txt"); // to open the file from my computer, or to create it and open
+                outmyfile << "The content of the file.\n"; // add some words to the file
+                //for(Politist elem: vctPolitist)
+                //{
+                    //cout << "a"<<endl;
+                //}
+                outmyfile.close(); // i close the file, to avoid memory leaks.
+
+                //numarare linii din fisier
+                ifstream inmyfile("agenti.txt");
+                unsigned short nrLinii = 0;
+                while(!inmyfile.eof())
+                {
+                    char buff[20];
+                    inmyfile.getline(buff,20); // citesc ca sa treaca cursorul la ultimul rand, buff e ultima linie citita
+                    ++nrLinii;
+                }
+                system("pause");
+                cout<<nrLinii<<endl;
+                inmyfile.seekg(0); // mut cursorul la inceput de fisier doar pt streamul de output
+
+                while(!inmyfile.eof())
+                {
+                    char buff[20];
+                    inmyfile.getline(buff,20);
+                    citirea din fisier
+                    stringstream ss;
+                    ss << buff; // inserez bufferul in stringstreamul ss
+                    for (Politist elem: vctPolitist) //parcurg fiecare element din vector si afisez la consola membrii lui
+                    {
+                        elem.Export(cout);
+                        cout << endl;
+                    }
+                }
+                inmyfile.close();
+                system("pause");
+                break;
+*/

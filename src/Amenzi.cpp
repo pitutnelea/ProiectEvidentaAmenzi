@@ -20,3 +20,7 @@ Amenzi::~Amenzi()
     //dtor
 }
 
+void Amenzi::ExportAmenzi(ostream& out)
+{
+    out << _codPolitist << " " << _codContravenient << " " << _amenda << " " << _categorie;
+}

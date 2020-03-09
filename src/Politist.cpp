@@ -18,7 +18,7 @@ Politist::~Politist()
     //dtor
 }
 
-void Politist::Export(ostream& out)
+void Politist::ExportPolitist(ostream& out)
 {
-     out << _codPolitist << " " << _numePolitist;
+    out << _codPolitist << " " << _numePolitist;
 }
