@@ -14,6 +14,7 @@ class Politist
         void SetCodPolitist(unsigned int codPolitist){_codPolitist = codPolitist;}
         unsigned int GetCodPolitist() {return _codPolitist;}
         void ExportPolitist(std::ostream&);
+        void ImportPolitist(std::istream&);
         virtual ~Politist();
 
     protected:

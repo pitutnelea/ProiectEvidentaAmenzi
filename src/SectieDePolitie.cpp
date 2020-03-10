@@ -294,7 +294,7 @@ void SectieDePolitie::AfiseazaSituatieAmenzi()
 */
 }
 
-void SectieDePolitie::SalvareInFisier()
+void SectieDePolitie::ScriereInFisier()
 {
     ofstream outFisAgenti("Agenti.txt");
     for (Politist elemAg: vctPolitist)

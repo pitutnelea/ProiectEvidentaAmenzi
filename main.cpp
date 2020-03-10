@@ -32,7 +32,7 @@ int main()
             case 0:
             {
                 system ("cls");
-                sectie.SalvareInFisier();
+                sectie.ScriereInFisier();
                 break;
             }
             case 1:
@@ -82,16 +82,6 @@ int main()
     }
     return 0;
 }
-
-
-/*
-                ofstream outFisAgenti("Agenti.txt");
-                for (Politist sectie: vctPolitist)
-                {
-                    sectie.Export(outFisAgenti);
-                }
-                system("pause");
-*/
 
 /*
             case 0:
