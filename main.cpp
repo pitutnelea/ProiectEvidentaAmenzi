@@ -3,11 +3,7 @@
 #include <stdlib.h>
 #include <iostream>
 using namespace std;
-#include <fstream>
-#include <string>
-#include <strstream>
-#include "Politist.h"
-//#include <vector>
+
 
 void Meniu()
 {
@@ -36,12 +32,7 @@ int main()
             case 0:
             {
                 system ("cls");
-                ofstream outFisAgenti("Agenti.txt");
-                for (Politist sectie: vctPolitist)
-                {
-                    sectie.Export(outFisAgenti);
-                }
-                system("pause");
+                sectie.SalvareInFisier();
                 break;
             }
             case 1:
@@ -91,6 +82,16 @@ int main()
     }
     return 0;
 }
+
+
+/*
+                ofstream outFisAgenti("Agenti.txt");
+                for (Politist sectie: vctPolitist)
+                {
+                    sectie.Export(outFisAgenti);
+                }
+                system("pause");
+*/
 
 /*
             case 0:

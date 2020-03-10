@@ -1,12 +1,16 @@
 #include "SectieDePolitie.h"
-#include <string>
-#include <iostream>
-//#include <vector>
-#include <algorithm>
-#include <cmath>
+//#include <iostream>
 using namespace std;
+#include <fstream>
 
 
+//#include <string>
+//#include <strstream>
+
+
+
+//#include <algorithm>
+//#include <cmath>
 //#include <sstream>
 //#include <algorithm>
 //#include <cctype>
@@ -288,4 +292,33 @@ void SectieDePolitie::AfiseazaSituatieAmenzi()
     for (int i = 0; i < vctSituatieAmenzi.size(); i++)
     {
 */
+}
+
+void SectieDePolitie::SalvareInFisier()
+{
+    ofstream outFisAgenti("Agenti.txt");
+    for (Politist elemAg: vctPolitist)
+    {
+        elemAg.ExportPolitist(outFisAgenti);
+        outFisAgenti << endl;
+    }
+    outFisAgenti.close();
+
+    ofstream outFisContravenienti("Contravenienti.txt");
+    for(Contravenient elemCtr: vctContravenient)
+    {
+        elemCtr.ExportContravenient(outFisContravenienti);
+        outFisContravenienti << endl;
+    }
+    outFisContravenienti.close();
+
+    ofstream outFisAmenzi("Amenzi.txt");
+    for(Amenzi elemAm: vctAmenzi)
+    {
+        elemAm.ExportAmenzi(outFisAmenzi);
+        outFisAmenzi << endl;
+    }
+    outFisAmenzi.close();
+
+    system("pause");
 }
