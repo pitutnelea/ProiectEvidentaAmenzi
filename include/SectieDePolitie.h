@@ -18,6 +18,7 @@ class SectieDePolitie
         void AfiseazaAmenziContravenient(); //toate amenzile luate de un anumit contravenient
         void AfiseazaSituatieAmenzi(); // afisez fiecare agent cu totalul amenzilor date
         void ScriereInFisier();
+        void CitireDinFisier(); //IMPORT
         virtual ~SectieDePolitie();
 
     protected:
@@ -27,6 +28,9 @@ class SectieDePolitie
         vector <Contravenient> vctContravenient;
         vector <Amenzi> vctAmenzi;
         vector <Amenzi> vctSituatieAmenzi;
+        void ImportAgenti();
+        void ImportContravenienti();
+        void ImportAmenzi();
 };
 
 #endif // SECTIEDEPOLITIE_H

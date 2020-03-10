@@ -25,6 +25,7 @@ int main()
 
     while (nrintrodus !=0)
     {
+        sectie.CitireDinFisier();
         Meniu();
         cin >> nrintrodus;
         switch (nrintrodus)

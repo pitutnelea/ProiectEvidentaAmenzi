@@ -1,11 +1,11 @@
 #include "SectieDePolitie.h"
-//#include <iostream>
+#include <iostream>
 using namespace std;
 #include <fstream>
 
 
-//#include <string>
-//#include <strstream>
+#include <string>
+#include <strstream>
 
 
 
@@ -321,4 +321,56 @@ void SectieDePolitie::ScriereInFisier()
     outFisAmenzi.close();
 
     system("pause");
+}
+
+void SectieDePolitie::CitireDinFisier()
+{
+    ImportAgenti();
+    ImportContravenienti();
+    ImportAmenzi();
+}
+
+void SectieDePolitie::ImportAgenti()
+{
+    ifstream inFisAgenti;
+    inFisAgenti.open("Agenti.txt");
+
+    //numarare de linii fisier
+    unsigned short nrLinii = 0;
+    while(!inFisAgenti.eof())
+    {
+        char buff[20];
+        inFisAgenti.getline(buff,20); // citesc ca sa treaca cursorul la ultimul rand, buff e ultima linie citita
+        ++nrLinii;
+    }
+    system("pause");
+    cout<<nrLinii<<endl;
+
+    inFisAgenti.seekg(0);
+
+    while(!inFisAgenti.eof())
+    {
+        char buff[20];
+        inFisAgenti.getline(buff,20);
+        istringstream ss;
+        ss << buff; // inserez bufferul in stringstreamul ss
+        for (Politist elem: vctPolitist) //parcurg fiecare element din vector si afisez la consola membrii lui
+        {
+            elem.Export(cout);
+            cout << endl;
+        }
+    }
+    inFisAgenti.close();
+    system("pause");
+
+}
+
+void SectieDePolitie::ImportContravenienti()
+{
+
+}
+
+void SectieDePolitie::ImportAmenzi()
+{
+
 }
