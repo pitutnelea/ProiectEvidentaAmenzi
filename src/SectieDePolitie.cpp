@@ -5,13 +5,12 @@ using namespace std;
 
 
 #include <string>
-#include <strstream>
-
+//#include <strstream>
+#include <sstream>
 
 
 //#include <algorithm>
 //#include <cmath>
-//#include <sstream>
 //#include <algorithm>
 //#include <cctype>
 
@@ -332,15 +331,25 @@ void SectieDePolitie::CitireDinFisier()
 
 void SectieDePolitie::ImportAgenti()
 {
+    //leg ifstreamul de fisier
     ifstream inFisAgenti;
     inFisAgenti.open("Agenti.txt");
 
-    //numarare de linii fisier
+    //parcurg fiecare linie din fisier. O linie inseamna un obiect. Alta linie alt obiect, trebuie sa recuperez linie cu linie
     unsigned short nrLinii = 0;
+    vector <Politist> vctNou;
     while(!inFisAgenti.eof())
     {
         char buff[20];
         inFisAgenti.getline(buff,20); // citesc ca sa treaca cursorul la ultimul rand, buff e ultima linie citita
+        stringstream ss;
+        ss << buff; // inserez bufferul in stringstreamul ss
+        unsigned int i;
+        string j;
+        ss >> i >> j;
+        Politist obTemp{};
+        vctNou.push_back(obTemp);
+            //Politist{elem.GetCodPolitist(), elem.GetNumePolitist()};
         ++nrLinii;
     }
     system("pause");
@@ -348,17 +357,10 @@ void SectieDePolitie::ImportAgenti()
 
     inFisAgenti.seekg(0);
 
-    while(!inFisAgenti.eof())
+    for (Politist elem: vctPolitist)
     {
-        char buff[20];
-        inFisAgenti.getline(buff,20);
-        istringstream ss;
-        ss << buff; // inserez bufferul in stringstreamul ss
-        for (Politist elem: vctPolitist) //parcurg fiecare element din vector si afisez la consola membrii lui
-        {
-            elem.Export(cout);
-            cout << endl;
-        }
+        elem.ExportPolitist(cout);//ii dau obiect de tip ostream unde sa-si faca exportul
+        cout << endl;
     }
     inFisAgenti.close();
     system("pause");

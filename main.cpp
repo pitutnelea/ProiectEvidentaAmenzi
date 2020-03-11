@@ -23,9 +23,9 @@ int main()
     SectieDePolitie sectie;
     unsigned int nrintrodus = 1;
 
+    sectie.CitireDinFisier();
     while (nrintrodus !=0)
     {
-        sectie.CitireDinFisier();
         Meniu();
         cin >> nrintrodus;
         switch (nrintrodus)
@@ -126,4 +126,53 @@ int main()
                 inmyfile.close();
                 system("pause");
                 break;
+*/
+
+
+
+/*
+
+void SectieDePolitie::ImportAgenti()
+{
+    ifstream inFisAgenti;
+    inFisAgenti.open("Agenti.txt");
+
+    //numarare de linii fisier
+    unsigned short nrLinii = 0;
+    while(!inFisAgenti.eof())
+    {
+        char buff[20];
+        inFisAgenti.getline(buff,20); // citesc ca sa treaca cursorul la ultimul rand, buff e ultima linie citita
+        ++nrLinii;
+    }
+    system("pause");
+    cout<<nrLinii<<endl;
+
+    inFisAgenti.seekg(0);
+
+    while(!inFisAgenti.eof())
+    {
+        char buff[20];
+        inFisAgenti.getline(buff,20);
+        stringstream ss;
+        ss << buff; // inserez bufferul in stringstreamul ss
+        for (Politist elem: vctPolitist) //parcurg fiecare element din vector si afisez la consola membrii lui
+        {
+            //ss >> elem.GetCodPolitist() >> elem.GetNumePolitist();
+            //Politist{elem.GetCodPolitist(), elem.GetNumePolitist()};
+        }
+    }
+
+    for (Politist elem: vctPolitist)
+    {
+        elem.ExportPolitist(cout);//ii dau obiect de tip ostream unde sa-si faca exportul
+        cout << endl;
+    }
+
+
+    inFisAgenti.close();
+    system("pause");
+
+}
+
 */

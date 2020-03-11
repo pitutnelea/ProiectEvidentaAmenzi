@@ -2,24 +2,29 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="include\Politist.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="512" topLine="0" />
+			<Cursor1 position="3353" topLine="107" />
 		</Cursor>
 	</File>
-	<File name="src\Politist.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\Amenzi.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="408" topLine="2" />
+			<Cursor1 position="708" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\Amenzi.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\SectieDePolitie.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="406" topLine="3" />
+			<Cursor1 position="1105" topLine="13" />
 		</Cursor>
 	</File>
 	<File name="src\SectieDePolitie.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="151" topLine="0" />
+			<Cursor1 position="10872" topLine="343" />
+		</Cursor>
+	</File>
+	<File name="src\Politist.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="412" topLine="4" />
 		</Cursor>
 	</File>
 	<File name="src\Contravenient.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -27,19 +32,19 @@
 			<Cursor1 position="402" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include\Amenzi.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Amenzi.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="708" topLine="6" />
+			<Cursor1 position="406" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\Politist.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="527" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="include\Contravenient.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="615" topLine="1" />
-		</Cursor>
-	</File>
-	<File name="include\SectieDePolitie.h" open="1" top="1" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="404" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
