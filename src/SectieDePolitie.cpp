@@ -337,25 +337,23 @@ void SectieDePolitie::ImportAgenti()
 
     //parcurg fiecare linie din fisier. O linie inseamna un obiect. Alta linie alt obiect, trebuie sa recuperez linie cu linie
     unsigned short nrLinii = 0;
-    vector <Politist> vctNou;
+    //vector <Politist> vctNou;
     while(!inFisAgenti.eof())
     {
         char buff[20];
         inFisAgenti.getline(buff,20); // citesc ca sa treaca cursorul la ultimul rand, buff e ultima linie citita
         stringstream ss;
         ss << buff; // inserez bufferul in stringstreamul ss
-        unsigned int i;
-        string j;
-        ss >> i >> j;
-        Politist obTemp{};
-        vctNou.push_back(obTemp);
-            //Politist{elem.GetCodPolitist(), elem.GetNumePolitist()};
+        unsigned int codPolitist;
+        string numePolitist;
+        ss >> codPolitist >> numePolitist;
+        Politist obTemp{numePolitist, codPolitist};
+        vctPolitist.push_back(obTemp);
         ++nrLinii;
+        inFisAgenti.close();
     }
     system("pause");
     cout<<nrLinii<<endl;
-
-    inFisAgenti.seekg(0);
 
     for (Politist elem: vctPolitist)
     {
@@ -364,7 +362,6 @@ void SectieDePolitie::ImportAgenti()
     }
     inFisAgenti.close();
     system("pause");
-
 }
 
 void SectieDePolitie::ImportContravenienti()
