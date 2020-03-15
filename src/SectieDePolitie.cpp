@@ -350,10 +350,8 @@ void SectieDePolitie::ImportAgenti()
         Politist obTemp{numePolitist, codPolitist};
         vctPolitist.push_back(obTemp);
         ++nrLinii;
-        inFisAgenti.close();
     }
-    system("pause");
-    cout<<nrLinii<<endl;
+    cout<<"Numarul total de linii este: " << nrLinii<<endl;
 
     for (Politist elem: vctPolitist)
     {
