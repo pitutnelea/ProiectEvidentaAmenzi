@@ -318,7 +318,6 @@ void SectieDePolitie::ScriereInFisier()
         outFisAmenzi << endl;
     }
     outFisAmenzi.close();
-
     system("pause");
 }
 
@@ -337,7 +336,6 @@ void SectieDePolitie::ImportAgenti()
 
     //parcurg fiecare linie din fisier. O linie inseamna un obiect. Alta linie alt obiect, trebuie sa recuperez linie cu linie
     unsigned short nrLinii = 0;
-    //vector <Politist> vctNou;
     while(!inFisAgenti.eof())
     {
         char buff[20];
@@ -351,7 +349,7 @@ void SectieDePolitie::ImportAgenti()
         vctPolitist.push_back(obTemp);
         ++nrLinii;
     }
-    cout<<"Numarul total de linii este: " << nrLinii<<endl;
+    cout<<"Numarul total de linii este agenti: " << nrLinii<<endl;
 
     for (Politist elem: vctPolitist)
     {
@@ -364,10 +362,65 @@ void SectieDePolitie::ImportAgenti()
 
 void SectieDePolitie::ImportContravenienti()
 {
+    //leg ifstreamul de fisier
+    ifstream inFisContravenienti;
+    inFisContravenienti.open("Contravenienti.txt");
 
+    //parcurg fiecare linie din fisier. O linie inseamna un obiect. Alta linie alt obiect, trebuie sa recuperez linie cu linie
+    unsigned short nrLinii = 0;
+    while(!inFisContravenienti.eof())
+    {
+        char buff[20];
+        inFisContravenienti.getline(buff,20); // citesc ca sa treaca cursorul la ultimul rand, buff e ultima linie citita
+        stringstream ss;
+        ss << buff; // inserez bufferul in stringstreamul ss
+        unsigned int codContravenient;
+        string numeContravenient;
+        ss >> codContravenient >> numeContravenient;
+        Contravenient obTemp{numeContravenient, codContravenient};
+        vctContravenient.push_back(obTemp);
+        ++nrLinii;
+    }
+    cout<<"Numarul total de linii contravenienti este: " << nrLinii<<endl;
+
+    for (Contravenient elem: vctContravenient)
+    {
+        elem.ExportContravenient(cout);//ii dau obiect de tip ostream unde sa-si faca exportul
+        cout << endl;
+    }
+    inFisContravenienti.close();
+    system("pause");
 }
 
 void SectieDePolitie::ImportAmenzi()
 {
+    //leg ifstreamul de fisier
+    ifstream inFisAmenzi;
+    inFisAmenzi.open("Amenzi.txt");
 
+    //parcurg fiecare linie din fisier. O linie inseamna un obiect. Alta linie alt obiect, trebuie sa recuperez linie cu linie
+    unsigned short nrLinii = 0;
+    while(!inFisAmenzi.eof())
+    {
+        char buff[20];
+        inFisAmenzi.getline(buff,20); // citesc ca sa treaca cursorul la ultimul rand, buff e ultima linie citita
+        stringstream ss;
+        ss << buff; // inserez bufferul in stringstreamul ss
+        unsigned int codPolitist, codContravenient;
+        double amenda;
+        Categorii categorie;
+        ss >> codPolitist >> codContravenient >> amenda;
+        Amenzi obTemp{codPolitist, codContravenient, amenda, categorie};
+        vctAmenzi.push_back(obTemp);
+        ++nrLinii;
+    }
+    cout<<"Numarul total de linii amenzi este: " << nrLinii<<endl;
+
+    for (Amenzi elem: vctAmenzi)
+    {
+        elem.ExportAmenzi(cout);//ii dau obiect de tip ostream unde sa-si faca exportul
+        cout << endl;
+    }
+    inFisAmenzi.close();
+    system("pause");
 }
