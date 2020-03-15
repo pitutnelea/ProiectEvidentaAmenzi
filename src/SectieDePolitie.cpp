@@ -362,18 +362,16 @@ void SectieDePolitie::ImportAgenti()
 
 void SectieDePolitie::ImportContravenienti()
 {
-    //leg ifstreamul de fisier
     ifstream inFisContravenienti;
     inFisContravenienti.open("Contravenienti.txt");
 
-    //parcurg fiecare linie din fisier. O linie inseamna un obiect. Alta linie alt obiect, trebuie sa recuperez linie cu linie
     unsigned short nrLinii = 0;
     while(!inFisContravenienti.eof())
     {
         char buff[20];
-        inFisContravenienti.getline(buff,20); // citesc ca sa treaca cursorul la ultimul rand, buff e ultima linie citita
+        inFisContravenienti.getline(buff,20);
         stringstream ss;
-        ss << buff; // inserez bufferul in stringstreamul ss
+        ss << buff;
         unsigned int codContravenient;
         string numeContravenient;
         ss >> codContravenient >> numeContravenient;
@@ -385,7 +383,7 @@ void SectieDePolitie::ImportContravenienti()
 
     for (Contravenient elem: vctContravenient)
     {
-        elem.ExportContravenient(cout);//ii dau obiect de tip ostream unde sa-si faca exportul
+        elem.ExportContravenient(cout);
         cout << endl;
     }
     inFisContravenienti.close();
@@ -394,22 +392,20 @@ void SectieDePolitie::ImportContravenienti()
 
 void SectieDePolitie::ImportAmenzi()
 {
-    //leg ifstreamul de fisier
     ifstream inFisAmenzi;
     inFisAmenzi.open("Amenzi.txt");
 
-    //parcurg fiecare linie din fisier. O linie inseamna un obiect. Alta linie alt obiect, trebuie sa recuperez linie cu linie
     unsigned short nrLinii = 0;
     while(!inFisAmenzi.eof())
     {
         char buff[20];
-        inFisAmenzi.getline(buff,20); // citesc ca sa treaca cursorul la ultimul rand, buff e ultima linie citita
+        inFisAmenzi.getline(buff,20);
         stringstream ss;
-        ss << buff; // inserez bufferul in stringstreamul ss
+        ss << buff;
         unsigned int codPolitist, codContravenient;
         double amenda;
         Categorii categorie;
-        ss >> codPolitist >> codContravenient >> amenda;
+        ss >> codPolitist >> codContravenient >> amenda >> categorie;
         Amenzi obTemp{codPolitist, codContravenient, amenda, categorie};
         vctAmenzi.push_back(obTemp);
         ++nrLinii;
@@ -418,7 +414,7 @@ void SectieDePolitie::ImportAmenzi()
 
     for (Amenzi elem: vctAmenzi)
     {
-        elem.ExportAmenzi(cout);//ii dau obiect de tip ostream unde sa-si faca exportul
+        elem.ExportAmenzi(cout);
         cout << endl;
     }
     inFisAmenzi.close();
