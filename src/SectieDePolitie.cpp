@@ -2,13 +2,11 @@
 #include <iostream>
 using namespace std;
 #include <fstream>
-
-
 #include <string>
-//#include <strstream>
 #include <sstream>
+#include <iterator>
 
-
+//#include <strstream>
 //#include <algorithm>
 //#include <cmath>
 //#include <algorithm>
@@ -34,7 +32,7 @@ Politist SectieDePolitie::AdaugaPolitist()
         vctPolitist.push_back(Politist{"AgentVirtual", 0});
     }
     system ("cls");
-    cout << "Introduceti numele politistului: "<< endl;
+    cout << "Introduceti numele politistului: ";
     cin >> nume;
     //https://stackoverflow.com/questions/13440831/how-do-i-check-if-input-is-an-integer-string
     /*if (any_of(nume.begin(), nume.end(),isdigit))
@@ -42,20 +40,29 @@ Politist SectieDePolitie::AdaugaPolitist()
         cout << "No digits allowed in name\n";
     }*/
 
-    cout << "Introduceti codul politistului: "<< endl;
-    cin >> codPolitist;
-    while (!codPolitist)
+    cout << "Introduceti codul politistului: ";
+    //validez inputul sa nu fie alfabetic sau cu caractere speciale
+    while (!(cin >> codPolitist))
     {
-        cout << "Cod invalid! Reintroduceti un cod in afara de: ";
-        for (Politist elem : vctPolitist)
-        {
-            cout << elem.GetCodPolitist();
-            cout << ", ";
-        }
-        cout << " " <<endl;
-        cout << "Reintroduceti codul: ";
-        cin >> codPolitist;
+        cout << "Atentie! Trebuie sa reintroduceti un numar: ";
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
     }
+    //validez inputul sa nu mai existe un politist cu acest cod
+    for(Politist elem : vctPolitist)
+    {
+        while ((elem.GetCodPolitist()) == codPolitist)
+        {
+            cout << "Atentie! Acest cod deja exista, va rugam sa alegeti un alt cod: ";
+            while (!(cin >> codPolitist))
+            {
+                cout << "Atentie! Trebuie sa reintroduceti un numar: ";
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+            }
+        }
+    }
+
     vctPolitist.push_back(Politist{nume, codPolitist});
     return Politist{nume, codPolitist};
 }
@@ -328,6 +335,7 @@ void SectieDePolitie::CitireDinFisier()
     ImportAmenzi();
 }
 
+//https://www.daniweb.com/programming/software-development/threads/487133/extra-line-in-txt-files
 void SectieDePolitie::ImportAgenti()
 {
     //leg ifstreamul de fisier
@@ -336,14 +344,14 @@ void SectieDePolitie::ImportAgenti()
 
     //parcurg fiecare linie din fisier. O linie inseamna un obiect. Alta linie alt obiect, trebuie sa recuperez linie cu linie
     unsigned short nrLinii = 0;
-    while(!inFisAgenti.eof())
+    unsigned int codPolitist;
+    string numePolitist;
+    while(inFisAgenti >> codPolitist >> numePolitist)
     {
         char buff[20];
         inFisAgenti.getline(buff,20); // citesc ca sa treaca cursorul la ultimul rand, buff e ultima linie citita
         stringstream ss;
         ss << buff; // inserez bufferul in stringstreamul ss
-        unsigned int codPolitist;
-        string numePolitist;
         ss >> codPolitist >> numePolitist;
         Politist obTemp{numePolitist, codPolitist};
         vctPolitist.push_back(obTemp);
@@ -366,14 +374,14 @@ void SectieDePolitie::ImportContravenienti()
     inFisContravenienti.open("Contravenienti.txt");
 
     unsigned short nrLinii = 0;
-    while(!inFisContravenienti.eof())
+    unsigned int codContravenient;
+    string numeContravenient;
+    while(inFisContravenienti >> codContravenient >> numeContravenient)
     {
         char buff[20];
         inFisContravenienti.getline(buff,20);
         stringstream ss;
         ss << buff;
-        unsigned int codContravenient;
-        string numeContravenient;
         ss >> codContravenient >> numeContravenient;
         Contravenient obTemp{numeContravenient, codContravenient};
         vctContravenient.push_back(obTemp);
@@ -392,21 +400,26 @@ void SectieDePolitie::ImportContravenienti()
 
 void SectieDePolitie::ImportAmenzi()
 {
-    /*ifstream inFisAmenzi;
-    inFisAmenzi.open("Amenzi.txt");
 
+    ifstream inFisAmenzi;
+    inFisAmenzi.open("Amenzi.txt");
     unsigned short nrLinii = 0;
-    while(!inFisAmenzi.eof())
+    unsigned int codPolitist, codContravenient;
+    double amenda;
+
+    enum Categorii foo;
+    int i=0;
+    inFisAmenzi >> i;
+    foo = (Categorii)i;
+
+    while(inFisAmenzi >> codPolitist >> codContravenient >> amenda >> i)
     {
         char buff[20];
         inFisAmenzi.getline(buff,20);
         stringstream ss;
         ss << buff;
-        unsigned int codPolitist, codContravenient;
-        double amenda;
-        Categorii categorie;
-        ss >> codPolitist >> codContravenient >> amenda >> categorie;
-        Amenzi obTemp{codPolitist, codContravenient, amenda, categorie};
+        ss >> codPolitist >> codContravenient >> amenda >> i;
+        Amenzi obTemp{codPolitist, codContravenient, amenda, foo};
         vctAmenzi.push_back(obTemp);
         ++nrLinii;
     }
@@ -418,5 +431,5 @@ void SectieDePolitie::ImportAmenzi()
         cout << endl;
     }
     inFisAmenzi.close();
-    system("pause"); */
+    system("pause");
 }

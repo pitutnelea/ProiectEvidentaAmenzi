@@ -4,7 +4,6 @@
 #include <iostream>
 using namespace std;
 
-
 void Meniu()
 {
     system ("cls");
@@ -89,3 +88,43 @@ int main()
     }
     return 0;
 }
+
+    /*cout << "Introduceti codul politistului: ";
+    //validez inputul sa nu fie alfabetic sau cu caractere speciale
+    while (!(cin >> codPolitist))
+    {
+        cout << "Atentie! Trebuie sa reintroduceti un numar: ";
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+    }
+    //validez inputul sa nu mai existe un politist cu acest cod
+    for(Politist elem : vctPolitist)
+    {
+        while ((elem.GetCodPolitist()) == codPolitist)
+        {
+            cout << "Atentie! Acest cod deja exista, va rugam sa alegeti un alt cod: ";
+            cin >> codPolitist;
+        }
+    }*/
+
+    /*//validez inputul sa nu fie alfabetic sau cu caractere speciale
+    while (!(cin >> codPolitist))
+    {
+        cout << "Atentie! Trebuie sa reintroduceti un numar: ";
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+    }
+    //validez inputul sa nu mai existe un politist cu acest cod
+    for(Politist elem : vctPolitist)
+    {
+        while ((elem.GetCodPolitist()) == codPolitist)
+        {
+            cout << "Atentie! Acest cod deja exista, va rugam sa alegeti un alt cod: ";
+            while (!(cin >> codPolitist))
+            {
+                cout << "Atentie! Trebuie sa reintroduceti un numar: ";
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+            }
+        }
+    }*/
