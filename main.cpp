@@ -16,6 +16,7 @@ void Meniu()
     cout<< "5. Afiseaza amenzi contravenient" <<endl;
     cout<< "6. Afiseaza situatie amenzi" <<endl;
     cout<< "0. Iesire" <<endl;
+    cout << "Trebuie sa introduceti un numar intre 0 si 6: ";
 }
 
 int main()
@@ -27,7 +28,19 @@ int main()
     while (nrintrodus !=0)
     {
         Meniu();
-        cin >> nrintrodus;
+        //validez inputul sa nu fie alfabetic sau cu caractere speciale
+        while (!(cin >> nrintrodus))
+        {
+            cout << "Atentie! Trebuie sa reintroduceti un numar intre 0 si 6: ";
+            cin.clear();
+            cin.ignore(INT_MAX, '\n');
+            //validez inputul sa nu fie mai mare decat 6
+            while(nrintrodus > 6)
+            {
+                cout << "Atentie! Trebuie sa reintroduceti un numar intre 0 si 6: ";
+                cin >> nrintrodus;
+            }
+        }
         switch (nrintrodus)
         {
             case 0:
@@ -70,13 +83,6 @@ int main()
             {
                 system("cls");
                 sectie.AfiseazaSituatieAmenzi();
-                break;
-            }
-            default:
-            {
-                system ("cls");
-                cout<< "Numarul introdus trebuie sa fie intre 0 si 6! Reintroduceti numarul"<<endl;
-                system("pause");
                 break;
             }
         }

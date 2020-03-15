@@ -392,7 +392,7 @@ void SectieDePolitie::ImportContravenienti()
 
 void SectieDePolitie::ImportAmenzi()
 {
-    ifstream inFisAmenzi;
+    /*ifstream inFisAmenzi;
     inFisAmenzi.open("Amenzi.txt");
 
     unsigned short nrLinii = 0;
@@ -418,5 +418,5 @@ void SectieDePolitie::ImportAmenzi()
         cout << endl;
     }
     inFisAmenzi.close();
-    system("pause");
+    system("pause"); */
 }
