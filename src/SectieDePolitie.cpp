@@ -2,11 +2,13 @@
 #include <iostream>
 using namespace std;
 #include <fstream>
-#include <string>
-#include <sstream>
-#include <iterator>
 
+
+#include <string>
 //#include <strstream>
+#include <sstream>
+
+
 //#include <algorithm>
 //#include <cmath>
 //#include <algorithm>
@@ -291,8 +293,6 @@ void SectieDePolitie::AfiseazaSituatieAmenzi()
         sort(vctSituatieAmenzi.begin(), vctSituatieAmenzi.end());
     for (const auto &i: vctSituatieAmenzi)
         cout << i << ' '<<endl;
-
-
     // Sort the vector in descending order
     sort(vctSituatieAmenzi.begin(), vctSituatieAmenzi.end(), wayToSort);
     for (int i = 0; i < vctSituatieAmenzi.size(); i++)
@@ -303,11 +303,15 @@ void SectieDePolitie::AfiseazaSituatieAmenzi()
 void SectieDePolitie::ScriereInFisier()
 {
     ofstream outFisAgenti("Agenti.txt");
-    for (Politist elemAg: vctPolitist)
+    for (unsigned int i= 0; i < vctPolitist.size(); i++)
     {
-        elemAg.ExportPolitist(outFisAgenti);
-        outFisAgenti << endl;
+        vctPolitist[i].ExportPolitist(outFisAgenti);
+        if(!vctPolitist.size())
+        {
+            outFisAgenti << endl;
+        }
     }
+
     outFisAgenti.close();
 
     ofstream outFisContravenienti("Contravenienti.txt");
@@ -335,7 +339,6 @@ void SectieDePolitie::CitireDinFisier()
     ImportAmenzi();
 }
 
-//https://www.daniweb.com/programming/software-development/threads/487133/extra-line-in-txt-files
 void SectieDePolitie::ImportAgenti()
 {
     //leg ifstreamul de fisier
@@ -344,14 +347,14 @@ void SectieDePolitie::ImportAgenti()
 
     //parcurg fiecare linie din fisier. O linie inseamna un obiect. Alta linie alt obiect, trebuie sa recuperez linie cu linie
     unsigned short nrLinii = 0;
-    unsigned int codPolitist;
-    string numePolitist;
-    while(inFisAgenti >> codPolitist >> numePolitist)
+    while(!inFisAgenti.eof())
     {
         char buff[20];
         inFisAgenti.getline(buff,20); // citesc ca sa treaca cursorul la ultimul rand, buff e ultima linie citita
         stringstream ss;
         ss << buff; // inserez bufferul in stringstreamul ss
+        unsigned int codPolitist;
+        string numePolitist;
         ss >> codPolitist >> numePolitist;
         Politist obTemp{numePolitist, codPolitist};
         vctPolitist.push_back(obTemp);
@@ -374,14 +377,14 @@ void SectieDePolitie::ImportContravenienti()
     inFisContravenienti.open("Contravenienti.txt");
 
     unsigned short nrLinii = 0;
-    unsigned int codContravenient;
-    string numeContravenient;
-    while(inFisContravenienti >> codContravenient >> numeContravenient)
+    while(!inFisContravenienti.eof())
     {
         char buff[20];
         inFisContravenienti.getline(buff,20);
         stringstream ss;
         ss << buff;
+        unsigned int codContravenient;
+        string numeContravenient;
         ss >> codContravenient >> numeContravenient;
         Contravenient obTemp{numeContravenient, codContravenient};
         vctContravenient.push_back(obTemp);
@@ -400,36 +403,29 @@ void SectieDePolitie::ImportContravenienti()
 
 void SectieDePolitie::ImportAmenzi()
 {
-
-    ifstream inFisAmenzi;
+    /*ifstream inFisAmenzi;
     inFisAmenzi.open("Amenzi.txt");
     unsigned short nrLinii = 0;
-    unsigned int codPolitist, codContravenient;
-    double amenda;
-
-    enum Categorii foo;
-    int i=0;
-    inFisAmenzi >> i;
-    foo = (Categorii)i;
-
-    while(inFisAmenzi >> codPolitist >> codContravenient >> amenda >> i)
+    while(!inFisAmenzi.eof())
     {
         char buff[20];
         inFisAmenzi.getline(buff,20);
         stringstream ss;
         ss << buff;
-        ss >> codPolitist >> codContravenient >> amenda >> i;
-        Amenzi obTemp{codPolitist, codContravenient, amenda, foo};
+        unsigned int codPolitist, codContravenient;
+        double amenda;
+        Categorii categorie;
+        ss >> codPolitist >> codContravenient >> amenda >> categorie;
+        Amenzi obTemp{codPolitist, codContravenient, amenda, categorie};
         vctAmenzi.push_back(obTemp);
         ++nrLinii;
     }
     cout<<"Numarul total de linii amenzi este: " << nrLinii<<endl;
-
     for (Amenzi elem: vctAmenzi)
     {
         elem.ExportAmenzi(cout);
         cout << endl;
     }
     inFisAmenzi.close();
-    system("pause");
+    system("pause"); */
 }

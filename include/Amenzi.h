@@ -18,6 +18,9 @@ class Amenzi
         Categorii GetCategorie(){return _categorie;}
         void ExportAmenzi(std::ostream&);
         virtual ~Amenzi();
+
+        //friend std::istream& operator >> (std::istream& in, Categorii& f);
+
     protected:
 
     private:
