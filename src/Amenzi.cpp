@@ -24,12 +24,3 @@ void Amenzi::ExportAmenzi(ostream& out)
 {
     out << _codPolitist << " " << _codContravenient << " " << _amenda << " " << _categorie;
 }
-
-/*istream& operator>>(istream& in, Categorii& f)
-{
-    in >>f.bicicleta;
-    in >> f.motoretaMotocicleta;
-    in >> f.autoturism;
-    in >> f.camion;
-    in >> f.tractor;
-}*/

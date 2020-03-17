@@ -302,31 +302,41 @@ void SectieDePolitie::AfiseazaSituatieAmenzi()
 
 void SectieDePolitie::ScriereInFisier()
 {
+    //i < vctPolitist.size()
+    // Daca am de ex 10 elemente, indexul va porni de la 0 - 9.
+    // In schimb size-ul este de 10.
+    // Pentru a nu mai insera inca un rand dupa ultimul element voi pune conditia din if if(i != (vctPolitist.size()-1))
+    // Asta inseamna ca i- ul ramane tot 9, iar size-ul din 10, va deveni tot 9.
     ofstream outFisAgenti("Agenti.txt");
-    for (unsigned int i= 0; i < vctPolitist.size(); i++)
+    for (unsigned int i = 0; i < vctPolitist.size(); i++)
     {
         vctPolitist[i].ExportPolitist(outFisAgenti);
-        if(!vctPolitist.size())
+        if(i != (vctPolitist.size()-1))
         {
             outFisAgenti << endl;
         }
     }
-
     outFisAgenti.close();
 
     ofstream outFisContravenienti("Contravenienti.txt");
-    for(Contravenient elemCtr: vctContravenient)
+    for(unsigned int i = 0; i < vctContravenient.size();i++)
     {
-        elemCtr.ExportContravenient(outFisContravenienti);
-        outFisContravenienti << endl;
+        vctContravenient[i].ExportContravenient(outFisContravenienti);
+        if(i != (vctContravenient.size()-1))
+        {
+            outFisContravenienti << endl;
+        }
     }
     outFisContravenienti.close();
 
     ofstream outFisAmenzi("Amenzi.txt");
-    for(Amenzi elemAm: vctAmenzi)
+    for(unsigned int i = 0; i < vctAmenzi.size(); i++)
     {
-        elemAm.ExportAmenzi(outFisAmenzi);
-        outFisAmenzi << endl;
+        vctAmenzi[i].ExportAmenzi(outFisAmenzi);
+        if(i != (vctAmenzi.size()-1))
+        {
+            outFisAmenzi << endl;
+        }
     }
     outFisAmenzi.close();
     system("pause");
@@ -427,5 +437,5 @@ void SectieDePolitie::ImportAmenzi()
         cout << endl;
     }
     inFisAmenzi.close();
-    system("pause"); */
+    system("pause");*/
 }

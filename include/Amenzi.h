@@ -19,8 +19,6 @@ class Amenzi
         void ExportAmenzi(std::ostream&);
         virtual ~Amenzi();
 
-        //friend std::istream& operator >> (std::istream& in, Categorii& f);
-
     protected:
 
     private:
