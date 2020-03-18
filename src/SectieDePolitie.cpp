@@ -413,7 +413,7 @@ void SectieDePolitie::ImportContravenienti()
 
 void SectieDePolitie::ImportAmenzi()
 {
-    /*ifstream inFisAmenzi;
+    ifstream inFisAmenzi;
     inFisAmenzi.open("Amenzi.txt");
     unsigned short nrLinii = 0;
     while(!inFisAmenzi.eof())
@@ -424,8 +424,21 @@ void SectieDePolitie::ImportAmenzi()
         ss << buff;
         unsigned int codPolitist, codContravenient;
         double amenda;
-        Categorii categorie;
-        ss >> codPolitist >> codContravenient >> amenda >> categorie;
+        unsigned int categ;
+        ss >> codPolitist >> codContravenient >> amenda >> categ;
+        //varianta 1
+        /*Categorii categorie;
+        switch(categ)
+        {
+            case 1: {categorie = bicicleta; break;}
+            case 2: {categorie = motoretaMotocicleta; break;}
+            case 3: {categorie = autoturism; break;}
+            case 4: {categorie = camion; break;}
+            case 5: {categorie = tractor; break;}
+        }*/
+        //varianta 2
+        Categorii categorie = static_cast<Categorii>(categ);
+
         Amenzi obTemp{codPolitist, codContravenient, amenda, categorie};
         vctAmenzi.push_back(obTemp);
         ++nrLinii;
@@ -437,5 +450,5 @@ void SectieDePolitie::ImportAmenzi()
         cout << endl;
     }
     inFisAmenzi.close();
-    system("pause");*/
+    system("pause");
 }
