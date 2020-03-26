@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <iostream>
 using namespace std;
+#include <cmath>
 
 void Meniu()
 {
@@ -18,6 +19,19 @@ void Meniu()
     cout << "Trebuie sa introduceti un numar intre 0 si 6: ";
 }
 
+bool Validare()
+{
+    bool valid = false;
+    int pp = 0;
+    cin >> pp;
+    if (cin.fail())
+    {
+        throw "Nu ati introdus un numar! Introduceti un numar";
+        cin >> pp;
+    }
+    return valid;
+}
+
 int main()
 {
     SectieDePolitie sectie;
@@ -28,6 +42,7 @@ int main()
     {
         Meniu();
         //validez inputul sa nu fie alfabetic sau cu caractere speciale
+        bool retFct = false;
         while (!(cin >> nrintrodus))
         {
             cout << "Atentie! Trebuie sa reintroduceti un numar intre 0 si 6: ";
@@ -39,7 +54,26 @@ int main()
                 cout << "Atentie! Trebuie sa reintroduceti un numar intre 0 si 6: ";
                 cin >> nrintrodus;
             }
+            while(!retFct)
+            {
+                try
+                {
+                    retFct = Validare();
+                    if (!retFct)
+                    {
+                        cout << "Nu a-ti introdus un numar! Mai introduceti o data:" << endl;
+                        cin >> nrintrodus;
+                    }
+                }
+                catch(const char* ex)
+                {
+                    cout << ex << endl;
+                    cin.clear();
+                    cin.ignore(10, '\n');
+                }
+            }
         }
+
         switch (nrintrodus)
         {
             case 0:
@@ -90,3 +124,20 @@ int main()
 }
     //MAXIMUL DINTRUN VECTOR
     //https://profs.info.uaic.ro/~infogim/2015/lectii/5/59.pdf
+
+
+/*    Meniu();
+        //validez inputul sa nu fie alfabetic sau cu caractere speciale
+
+        while (!(cin >> nrintrodus))
+        {
+            cout << "Atentie! Trebuie sa reintroduceti un numar intre 0 si 6: ";
+            cin.clear();
+            cin.ignore(INT_MAX, '\n');
+            //validez inputul sa nu fie mai mare decat 6
+            while(nrintrodus > 6)
+            {
+                cout << "Atentie! Trebuie sa reintroduceti un numar intre 0 si 6: ";
+                cin >> nrintrodus;
+            }
+        }*/
