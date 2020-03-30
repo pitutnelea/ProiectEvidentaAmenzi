@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <iostream>
 using namespace std;
-#include <cmath>
 
 void Meniu()
 {
@@ -19,17 +18,35 @@ void Meniu()
     cout << "Trebuie sa introduceti un numar intre 0 si 6: ";
 }
 
-bool Validare()
+#include <ios>  // Provides ios_base::failure
+#include <iostream>  // Provides cin
+
+template <typename T>
+T getValidatedInput()
 {
-    bool valid = false;
-    int pp = 0;
-    cin >> pp;
-    if (cin.fail())
+    // Get input of type T
+    T result;
+    cin >> result;
+
+    // Check if the failbit has been set, meaning the beginning of the input
+    // was not type T. Also make sure the result is the only thing in the input
+    // stream, otherwise things like 2b would be a valid int.
+    if (cin.fail() || cin.get() != '\n')
     {
-        throw "Nu ati introdus un numar! Introduceti un numar";
-        cin >> pp;
+        // Set the error state flag back to goodbit. If you need to get the input
+        // again (e.g. this is in a while loop), this is essential. Otherwise, the
+        // failbit will stay set.
+        cin.clear();
+
+        // Clear the input stream using and empty while loop.
+        while (cin.get() != '\n');
+
+        // Throw an exception. Allows the caller to handle it any way you see fit
+        // (exit, ask for input again, etc.)
+        throw ios_base::failure("Invalid input.");
     }
-    return valid;
+
+    return result;
 }
 
 int main()
@@ -41,38 +58,23 @@ int main()
     while (nrintrodus !=0)
     {
         Meniu();
-        //validez inputul sa nu fie alfabetic sau cu caractere speciale
-        bool retFct = false;
-        while (!(cin >> nrintrodus))
+        //https://stackoverflow.com/questions/514420/how-to-validate-numeric-input-c
+        while (true)
         {
-            cout << "Atentie! Trebuie sa reintroduceti un numar intre 0 si 6: ";
-            cin.clear();
-            cin.ignore(INT_MAX, '\n');
-            //validez inputul sa nu fie mai mare decat 6
-            while(nrintrodus > 6)
+            cout << "Introduceti un numar: ";
+            try
             {
-                cout << "Atentie! Trebuie sa reintroduceti un numar intre 0 si 6: ";
-                cin >> nrintrodus;
+                nrintrodus = getValidatedInput<int>();
             }
-            while(!retFct)
+            catch (exception e)
             {
-                try
-                {
-                    retFct = Validare();
-                    if (!retFct)
-                    {
-                        cout << "Nu a-ti introdus un numar! Mai introduceti o data:" << endl;
-                        cin >> nrintrodus;
-                    }
-                }
-                catch(const char* ex)
-                {
-                    cout << ex << endl;
-                    cin.clear();
-                    cin.ignore(10, '\n');
-                }
+                cerr << e.what() << endl;
+                continue;
             }
+        break;
         }
+        //cout << "You entered: " << nrintrodus << endl;
+        //return EXIT_SUCCESS;
 
         switch (nrintrodus)
         {
@@ -141,3 +143,40 @@ int main()
                 cin >> nrintrodus;
             }
         }*/
+
+
+/*
+        Meniu();
+        //validez inputul sa nu fie alfabetic sau cu caractere speciale
+        bool retFct = false;
+        while (!(cin >> nrintrodus))
+        {
+            cout << "Atentie! Trebuie sa reintroduceti un numar intre 0 si 6: ";
+            cin.clear();
+            cin.ignore(INT_MAX, '\n');
+            //validez inputul sa nu fie mai mare decat 6
+            while(nrintrodus > 6)
+            {
+                cout << "Atentie! Trebuie sa reintroduceti un numar intre 0 si 6: ";
+                cin >> nrintrodus;
+            }
+            while(!retFct)
+            {
+                try
+                {
+                    retFct = Validare();
+                    if (!retFct)
+                    {
+                        cout << "Nu a-ti introdus un numar! Mai introduceti o data:" << endl;
+                        cin >> nrintrodus;
+                    }
+                }
+                catch(const char* ex)
+                {
+                    cout << ex << endl;
+                    cin.clear();
+                    cin.ignore(10, '\n');
+                }
+            }
+        }
+*/
