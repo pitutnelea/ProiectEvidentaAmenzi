@@ -36,32 +36,16 @@ Politist SectieDePolitie::AdaugaPolitist()
     system ("cls");
     cout << "Introduceti numele politistului: ";
     cin >> nume;
-    //https://stackoverflow.com/questions/13440831/how-do-i-check-if-input-is-an-integer-string
-    /*if (any_of(nume.begin(), nume.end(),isdigit))
-    {
-        cout << "No digits allowed in name\n";
-    }*/
-
     cout << "Introduceti codul politistului: ";
-    //validez inputul sa nu fie alfabetic sau cu caractere speciale
-    while (!(cin >> codPolitist))
-    {
-        cout << "Atentie! Trebuie sa reintroduceti un numar: ";
-        cin.clear();
-        cin.ignore(INT_MAX, '\n');
-    }
     //validez inputul sa nu mai existe un politist cu acest cod
-    for(Politist elem : vctPolitist)
+    cin >> codPolitist;
+    for (unsigned int i=0; i < vctPolitist.size(); i++)
     {
-        while ((elem.GetCodPolitist()) == codPolitist)
+        while(vctPolitist[i].GetCodPolitist() == codPolitist)
         {
             cout << "Atentie! Acest cod deja exista, va rugam sa alegeti un alt cod: ";
-            while (!(cin >> codPolitist))
-            {
-                cout << "Atentie! Trebuie sa reintroduceti un numar: ";
-                cin.clear();
-                cin.ignore(INT_MAX, '\n');
-            }
+            cin >> codPolitist;
+            continue;
         }
     }
 
@@ -75,16 +59,22 @@ void SectieDePolitie::StergePolitist()
     cout << "Codul si numele aferent fiecarui agent: " << endl;
     for(Politist elem : vctPolitist)
     {
-        cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist() <<endl;
+        if((elem.GetCodPolitist()) != 0)
+        {
+            cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist() <<endl;
+        }
     }
     cout << "Selectati numarul agentului de sters: ";
     cin >> codulAgentului;
     for(auto it = vctPolitist.begin(); it != vctPolitist.end(); ++it)
     {
-        if ((it->GetCodPolitist())== codulAgentului)
+        if(codulAgentului !=0)
         {
+            if ((it->GetCodPolitist())== codulAgentului)
+            {
             vctPolitist.erase(it);
             break;
+            }
         }
     }
     //prin referinta se modifica originalul
@@ -95,7 +85,6 @@ void SectieDePolitie::StergePolitist()
             elemPol.SetCodPolitist(0);
         }
     }
-
     system("pause");
 }
 
@@ -112,76 +101,84 @@ Contravenient SectieDePolitie::AdaugaAmenda()
     cout << "Codul si numele aferent fiecarui agent: " << endl;
     for(Politist elem : vctPolitist)
     {
-        cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist() <<endl;
+        if((elem.GetCodPolitist()) != 0)
+        {
+            cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist() <<endl;
+        }
     }
     cout<< "Selectati codul agentului constatator:";
     cin >> codPolitist;
-    cout << "Introduceti numele soferului: ";
-    cin >> nume;
 
-    //for-ul ma ajuta sa verific ca nu am 2 contravenienti cu aleasi nume
-    for (i = 0; i < vctContravenient.size(); i++)
+    if(codPolitist !=0)
     {
-        if (nume.compare(vctContravenient[i].GetNumeContravenient()) == 0)
-        {
-            break;
-        }
-    }
+        cout << "Introduceti numele soferului: ";
+        cin >> nume;
 
-    cout << "Precizati valoarea amenzii: ";
-    cin >>valAmenda;
-    //IF - daca numele nu a existat | daca numele a existat
-    if (i == (vctContravenient.size()))
-    {
-        cout << "NU A EXISTAT" << endl;
-        cout << "Introduceti codul soferului: ";
-        cin >> codContravenient;
-        vctContravenient.push_back(Contravenient{nume, codContravenient});
-    }
-    /*while (codContravenient)
-    {
-        cout << "Cod invalid! Reintroduceti un cod in afara de: 0, ";
-        for (Contravenient elem : vctContravenient)
+        //for-ul ma ajuta sa verific ca nu am 2 contravenienti cu aleasi nume
+        for (i = 0; i < vctContravenient.size(); i++)
         {
-            cout << elem.GetCodContravenient();
-            cout << ", ";
+            if (nume.compare(vctContravenient[i].GetNumeContravenient()) == 0)
+            {
+                break;
+            }
         }
-        cout << " " <<endl;
-        cout << "Reintroduceti codul: ";
-        cin >> codContravenient;
-    }*/
-    system ("cls");
-    cout << "1. bicicleta" <<endl;
-    cout << "2. motoreta-motocicleta "<<endl;
-    cout << "3. autoturism" << endl;
-    cout << "4. camion" << endl;
-    cout << "5. tractor "<< endl;
-    cout << "0. revenire ecran anterior" << endl;
-    cout << "Selectati categoria: ";
-    cin >> varEnum;
-    switch (varEnum)
-    {
-        //sa determin ce categorie este si dupa switch sa creez amenda.
-        //declar var enum inainte de switch ca si tipul de enum
-        case 0: {break;}
-        case 1: {valCateg = bicicleta;  break;}
-        case 2: {valCateg = motoretaMotocicleta; break;}
-        case 3: {valCateg = autoturism; break;}
-        case 4: {valCateg = camion; break;}
-        case 5: {valCateg = tractor; break;}
-        default:
+
+        cout << "Precizati valoarea amenzii: ";
+        cin >>valAmenda;
+        //IF - daca numele nu a existat | daca numele a existat
+        if (i == (vctContravenient.size()))
         {
-            cout << "Input invalid! Reintroduceti o cifra intre 0 si 5: ";
-            cin >> varEnum;
-            while ((varEnum <0) || (varEnum > 5))
+            cout << "NU A EXISTAT" << endl;
+            cout << "Introduceti codul soferului: ";
+            cin >> codContravenient;
+            vctContravenient.push_back(Contravenient{nume, codContravenient});
+        }
+        /*while (codContravenient)
+        {
+            cout << "Cod invalid! Reintroduceti un cod in afara de: 0, ";
+            for (Contravenient elem : vctContravenient)
+            {
+                cout << elem.GetCodContravenient();
+                cout << ", ";
+            }
+            cout << " " <<endl;
+            cout << "Reintroduceti codul: ";
+            cin >> codContravenient;
+        }*/
+        system ("cls");
+        cout << "1. bicicleta" <<endl;
+        cout << "2. motoreta-motocicleta "<<endl;
+        cout << "3. autoturism" << endl;
+        cout << "4. camion" << endl;
+        cout << "5. tractor "<< endl;
+        cout << "0. revenire ecran anterior" << endl;
+        cout << "Selectati categoria: ";
+        cin >> varEnum;
+        switch (varEnum)
+        {
+            //sa determin ce categorie este si dupa switch sa creez amenda.
+            //declar var enum inainte de switch ca si tipul de enum
+            case 0: {break;}
+            case 1: {valCateg = bicicleta;  break;}
+            case 2: {valCateg = motoretaMotocicleta; break;}
+            case 3: {valCateg = autoturism; break;}
+            case 4: {valCateg = camion; break;}
+            case 5: {valCateg = tractor; break;}
+            default:
             {
                 cout << "Input invalid! Reintroduceti o cifra intre 0 si 5: ";
-                cin >>varEnum;
+                cin >> varEnum;
+                while ((varEnum <0) || (varEnum > 5))
+                {
+                    cout << "Input invalid! Reintroduceti o cifra intre 0 si 5: ";
+                    cin >>varEnum;
+                }
+                break;
+                system ("pause");
             }
-            break;
-            system ("pause");
         }
     }
+
     system("cls");
     Amenzi{codPolitist, vctContravenient[i].GetCodContravenient(), valAmenda , valCateg};
     vctAmenzi.push_back(Amenzi{codPolitist, vctContravenient[i].GetCodContravenient(), valAmenda , valCateg});

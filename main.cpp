@@ -54,7 +54,7 @@ int main()
     SectieDePolitie sectie;
     unsigned int nrintrodus = 1;
 
-    sectie.CitireDinFisier();
+    //sectie.CitireDinFisier();
     while (nrintrodus !=0)
     {
         Meniu();
@@ -179,4 +179,77 @@ int main()
                 }
             }
         }
+*/
+
+
+
+
+
+
+
+
+/*
+Politist SectieDePolitie::AdaugaPolitist()
+{
+    string nume;
+    unsigned int codPolitist;
+    if (vctPolitist.size()==0)
+    {
+        Politist{"AgentVirtual", 0};
+        vctPolitist.push_back(Politist{"AgentVirtual", 0});
+    }
+    system ("cls");
+    cout << "Introduceti numele politistului: ";
+    cin >> nume;
+    cout << "Introduceti codul politistului: ";
+    cin >> codPolitist;
+    //validez inputul sa nu mai existe un politist cu acest cod
+    while (!codPolitist)
+    {
+        for(Politist elem : vctPolitist)
+        {
+            while ((elem.GetCodPolitist()) == codPolitist)
+            {
+            cout << "Atentie! Acest cod deja exista, va rugam sa alegeti un alt cod: ";
+            cin >> codPolitist;
+            }
+        }
+    }
+
+    vctPolitist.push_back(Politist{nume, codPolitist});
+    return Politist{nume, codPolitist};
+}
+*/
+
+/*
+Politist SectieDePolitie::AdaugaPolitist()
+{
+    string nume;
+    unsigned int codPolitist=0;
+    if (vctPolitist.size()==0)
+    {
+        Politist{"AgentVirtual", 0};
+        vctPolitist.push_back(Politist{"AgentVirtual", 0});
+    }
+    system ("cls");
+    cout << "Introduceti numele politistului: ";
+    cin >> nume;
+    cout << "Introduceti codul politistului: ";
+    //validez inputul sa nu mai existe un politist cu acest cod
+    cin >> codPolitist;
+    while (!codPolitist)
+    {
+        for(auto it = vctPolitist.begin(); it != vctPolitist.end(); ++it)
+        {
+            while ((it->GetCodPolitist())== codPolitist)
+            {
+            cout << "Atentie! Acest cod deja exista, va rugam sa alegeti un alt cod: ";
+            cin >> codPolitist;
+            }
+        }
+    }
+
+    vctPolitist.push_back(Politist{nume, codPolitist});
+    return Politist{nume, codPolitist};
+}
 */
