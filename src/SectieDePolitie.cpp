@@ -304,7 +304,7 @@ void SectieDePolitie::AfiseazaSituatieAmenzi()
 
 void SectieDePolitie::ScriereInFisier()
 {
-    //i < vctPolitist.size()
+    // i < vctPolitist.size()
     // Daca am de ex 10 elemente, indexul va porni de la 0 - 9.
     // In schimb size-ul este de 10.
     // Pentru a nu mai insera inca un rand dupa ultimul element voi pune conditia din if if(i != (vctPolitist.size()-1))
@@ -372,15 +372,14 @@ void SectieDePolitie::ImportAgenti()
         vctPolitist.push_back(obTemp);
         ++nrLinii;
     }
-    cout<<"Numarul total de linii este agenti: " << nrLinii<<endl;
-
+    /*cout<<"Numarul total de linii este agenti: " << nrLinii<<endl;
     for (Politist elem: vctPolitist)
     {
         elem.ExportPolitist(cout);//ii dau obiect de tip ostream unde sa-si faca exportul
         cout << endl;
-    }
+    }*/
     inFisAgenti.close();
-    system("pause");
+    //system("pause");
 }
 
 void SectieDePolitie::ImportContravenienti()
@@ -402,15 +401,7 @@ void SectieDePolitie::ImportContravenienti()
         vctContravenient.push_back(obTemp);
         ++nrLinii;
     }
-    cout<<"Numarul total de linii contravenienti este: " << nrLinii<<endl;
-
-    for (Contravenient elem: vctContravenient)
-    {
-        elem.ExportContravenient(cout);
-        cout << endl;
-    }
     inFisContravenienti.close();
-    system("pause");
 }
 
 void SectieDePolitie::ImportAmenzi()
@@ -445,12 +436,5 @@ void SectieDePolitie::ImportAmenzi()
         vctAmenzi.push_back(obTemp);
         ++nrLinii;
     }
-    cout<<"Numarul total de linii amenzi este: " << nrLinii<<endl;
-    for (Amenzi elem: vctAmenzi)
-    {
-        elem.ExportAmenzi(cout);
-        cout << endl;
-    }
     inFisAmenzi.close();
-    system("pause");
 }
