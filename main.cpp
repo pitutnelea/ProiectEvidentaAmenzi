@@ -38,7 +38,7 @@ int main()
     SectieDePolitie sectie;
     unsigned int nrintrodus = 1;
 
-    sectie.CitireDinFisier();
+    //sectie.CitireDinFisier();
     while (nrintrodus !=0)
     {
         Meniu();
@@ -54,7 +54,7 @@ int main()
                 cout << "Reintroduceti un numar: ";
                 continue;
             }
-        break;
+            break;
         }
 
         switch (nrintrodus)

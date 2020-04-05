@@ -7,6 +7,9 @@ using namespace std;
 #include <string>
 //#include <strstream>
 #include <sstream>
+#include <ios>
+#include <stdlib.h>
+
 
 
 //#include <algorithm>
@@ -24,6 +27,20 @@ SectieDePolitie::~SectieDePolitie()
     //dtor
 }
 
+template <typename T>
+T getValidatedInput()
+{
+    T result;
+    cin >> result;
+    if (cin.fail() || cin.get() != '\n')
+    {
+        cin.clear();
+        while (cin.get() != '\n');
+        throw ios_base::failure("Invalid input.");
+    }
+    return result;
+}
+
 Politist SectieDePolitie::AdaugaPolitist()
 {
     string nume;
@@ -39,6 +56,27 @@ Politist SectieDePolitie::AdaugaPolitist()
     cout << "Introduceti codul politistului: ";
     //validez inputul sa nu mai existe un politist cu acest cod
     cin >> codPolitist;
+    /*if(codPolitist == 0)
+    {
+        cout << "Atentie! Alegeti un alt cod in afara de 0:";
+        cin >> codPolitist;
+    }*/
+
+    while(!codPolitist)
+    {
+        try
+        {
+            codPolitist = getValidatedInput<int>();
+        }
+        catch (exception e)
+        {
+            e.what();
+            cout << "Reintroduceti un numar: ";
+            continue;
+        }
+        break;
+    }
+
     for (unsigned int i=0; i < vctPolitist.size(); i++)
     {
         while(vctPolitist[i].GetCodPolitist() == codPolitist)
@@ -48,7 +86,6 @@ Politist SectieDePolitie::AdaugaPolitist()
             continue;
         }
     }
-
     vctPolitist.push_back(Politist{nume, codPolitist});
     return Politist{nume, codPolitist};
 }
@@ -66,6 +103,20 @@ void SectieDePolitie::StergePolitist()
     }
     cout << "Selectati numarul agentului de sters: ";
     cin >> codulAgentului;
+    while((!codulAgentului)&&(codulAgentului!=0))
+    {
+        try
+        {
+            codulAgentului = getValidatedInput<int>();
+        }
+        catch (exception e)
+        {
+            e.what();
+            cout << "Reintroduceti un numar: ";
+            continue;
+        }
+        break;
+    }
     for(auto it = vctPolitist.begin(); it != vctPolitist.end(); ++it)
     {
         if(codulAgentului !=0)
@@ -106,8 +157,22 @@ Contravenient SectieDePolitie::AdaugaAmenda()
             cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist() <<endl;
         }
     }
-    cout<< "Selectati codul agentului constatator:";
+    cout<< "Selectati codul agentului constatator: ";
     cin >> codPolitist;
+    while(!codPolitist)
+    {
+        try
+        {
+            codPolitist = getValidatedInput<int>();
+        }
+        catch (exception e)
+        {
+            e.what();
+            cout << "Reintroduceti un numar: ";
+            continue;
+        }
+        break;
+    }
     if(codPolitist !=0)
     {
         cout << "Introduceti numele soferului: ";
@@ -124,12 +189,40 @@ Contravenient SectieDePolitie::AdaugaAmenda()
 
         cout << "Precizati valoarea amenzii: ";
         cin >>valAmenda;
+        while (!valAmenda)
+        {
+            try
+            {
+                valAmenda = getValidatedInput<int>();
+            }
+            catch (exception e)
+            {
+                e.what();
+                cout << "Reintroduceti un numar: ";
+                continue;
+            }
+            break;
+        }
         //IF - daca numele nu a existat | daca numele a existat
         if (i == (vctContravenient.size()))
         {
-            cout << "NU A EXISTAT" << endl;
+            //cout << "NU A EXISTAT" << endl;
             cout << "Introduceti codul soferului: ";
             cin >> codContravenient;
+            while (!codContravenient)
+            {
+                try
+                {
+                    codContravenient = getValidatedInput<int>();
+                }
+                catch (exception e)
+                {
+                    e.what();
+                    cout << "Reintroduceti un numar: ";
+                    continue;
+                }
+                break;
+            }
             vctContravenient.push_back(Contravenient{nume, codContravenient});
         }
         /*while (codContravenient)
@@ -153,6 +246,20 @@ Contravenient SectieDePolitie::AdaugaAmenda()
         cout << "0. revenire ecran anterior" << endl;
         cout << "Selectati categoria: ";
         cin >> varEnum;
+        while (!varEnum)
+        {
+            try
+            {
+                varEnum = getValidatedInput<int>();
+            }
+            catch (exception e)
+            {
+                e.what();
+                cout << "Reintroduceti un numar: ";
+                continue;
+            }
+            break;
+        }
         switch (varEnum)
         {
             //sa determin ce categorie este si dupa switch sa creez amenda.
@@ -167,10 +274,38 @@ Contravenient SectieDePolitie::AdaugaAmenda()
             {
                 cout << "Input invalid! Reintroduceti o cifra intre 0 si 5: ";
                 cin >> varEnum;
+                while (!varEnum)
+                {
+                    try
+                    {
+                        varEnum = getValidatedInput<int>();
+                    }
+                    catch (exception e)
+                    {
+                        e.what();
+                        cout << "Reintroduceti un numar: ";
+                        continue;
+                    }
+                    break;
+                }
                 while ((varEnum <0) || (varEnum > 5))
                 {
                     cout << "Input invalid! Reintroduceti o cifra intre 0 si 5: ";
                     cin >>varEnum;
+                    while (!varEnum)
+                    {
+                        try
+                        {
+                            varEnum = getValidatedInput<int>();
+                        }
+                        catch (exception e)
+                        {
+                            e.what();
+                            cout << "Reintroduceti un numar: ";
+                            continue;
+                        }
+                        break;
+                    }
                 }
                 break;
                 system ("pause");
@@ -196,6 +331,20 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
     }
     cout<<"Selectati codul politistului pentru a vedea toate amenzile date de acesta: ";
     cin >> codulAgentului;
+    while (!codulAgentului)
+    {
+        try
+        {
+            codulAgentului = getValidatedInput<int>();
+        }
+        catch (exception e)
+        {
+            e.what();
+            cout << "Reintroduceti un numar: ";
+            continue;
+        }
+        break;
+    }
     system("cls");
     double varTotal;
     if (codulAgentului !=0 )
@@ -230,6 +379,20 @@ void SectieDePolitie::AfiseazaAmenziContravenient()
     cout<<"Selectati codul contravenientului: ";
     unsigned int codulContravenientului;
     cin >> codulContravenientului;
+    while (!codulContravenientului)
+    {
+        try
+        {
+            codulContravenientului = getValidatedInput<int>();
+        }
+        catch (exception e)
+        {
+            e.what();
+            cout << "Reintroduceti un numar: ";
+            continue;
+        }
+        break;
+    }
     double varTotal;
     system("cls");
     for (Contravenient elem : vctContravenient)
@@ -256,7 +419,6 @@ void SectieDePolitie::AfiseazaAmenziContravenient()
     system ("pause");
     }
 }
-
 
 void SectieDePolitie::AfiseazaSituatieAmenzi()
 {
