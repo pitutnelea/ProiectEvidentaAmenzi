@@ -395,29 +395,33 @@ void SectieDePolitie::AfiseazaAmenziContravenient()
     }
     double varTotal;
     system("cls");
-    for (Contravenient elem : vctContravenient)
+
+    for(Amenzi elemContr : vctAmenzi)
     {
-        if ((elem.GetCodContravenient()) == codulContravenientului)
+        if ((elemContr.GetCodContrav()) == codulContravenientului)
         {
-            cout << elem.GetCodContravenient()<<". "<< elem.GetNumeContravenient() << " "<<endl;
-            for (Amenzi elemContr : vctAmenzi)
+            for (Contravenient elem : vctContravenient)
             {
-                cout << elemContr.GetAmenda() << " (" ;
-                switch (elemContr.GetCategorie())
+                if((elem.GetCodContravenient())==elemContr.GetCodContrav())
                 {
-                    case 1: {cout << "bicicleta";  break;}
-                    case 2: {cout << "motoretaMotocicleta"; break;}
-                    case 3: {cout << "autoturism"; break;}
-                    case 4: {cout << "camion"; break;}
-                    case 5: {cout << "tractor"; break;}
+                    cout << elem.GetCodContravenient() << ". " <<elem.GetNumeContravenient()<< " ";
                 }
-                cout<< ") "<<endl;
-                varTotal += (elemContr.GetAmenda());
             }
+            varTotal += (elemContr.GetAmenda());
+            cout << elemContr.GetAmenda() << " (" ;
+            switch (elemContr.GetCategorie())
+            {
+                case 1: {cout << "bicicleta";  break;}
+                case 2: {cout << "motoretaMotocicleta"; break;}
+                case 3: {cout << "autoturism"; break;}
+                case 4: {cout << "camion"; break;}
+                case 5: {cout << "tractor"; break;}
+            }
+            cout<< ") "<<endl;
         }
+    }
     cout << "Totalul amenzilor luate de contravenientul selectat: " << varTotal<< endl;
     system ("pause");
-    }
 }
 
 void SectieDePolitie::AfiseazaSituatieAmenzi()
