@@ -108,7 +108,6 @@ Contravenient SectieDePolitie::AdaugaAmenda()
     }
     cout<< "Selectati codul agentului constatator:";
     cin >> codPolitist;
-
     if(codPolitist !=0)
     {
         cout << "Introduceti numele soferului: ";
@@ -178,7 +177,6 @@ Contravenient SectieDePolitie::AdaugaAmenda()
             }
         }
     }
-
     system("cls");
     Amenzi{codPolitist, vctContravenient[i].GetCodContravenient(), valAmenda , valCateg};
     vctAmenzi.push_back(Amenzi{codPolitist, vctContravenient[i].GetCodContravenient(), valAmenda , valCateg});
@@ -191,29 +189,36 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
     cout << "Codul si numele aferent fiecarui agent: " << endl;
     for(Politist elem : vctPolitist)
     {
+        if((elem.GetCodPolitist()) != 0)
+        {
         cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist() <<endl;
+        }
     }
-    cout<<"Selectati codul politistului pentru a vedea toate toate amenzile date de acesta: "<<endl;
+    cout<<"Selectati codul politistului pentru a vedea toate amenzile date de acesta: ";
     cin >> codulAgentului;
     system("cls");
     double varTotal;
-    for(Amenzi elemPol : vctAmenzi)
+    if (codulAgentului !=0 )
     {
-        if ((elemPol.GetCodPolitist()) == codulAgentului)
+        system("cls");
+        for(Amenzi elemPol : vctAmenzi)
         {
-            for(Contravenient elemContr : vctContravenient)
+            if ((elemPol.GetCodPolitist()) == codulAgentului)
             {
-                if((elemContr.GetCodContravenient())== elemPol.GetCodContrav())
+                for(Contravenient elemContr : vctContravenient)
                 {
-                    cout << elemContr.GetCodContravenient()<<". "<< elemContr.GetNumeContravenient() << " ";
+                    if((elemContr.GetCodContravenient())== elemPol.GetCodContrav())
+                    {
+                        cout << elemContr.GetCodContravenient()<<". "<< elemContr.GetNumeContravenient() << " ";
+                    }
                 }
+                cout << elemPol.GetAmenda()<<endl;
+                varTotal += (elemPol.GetAmenda());
             }
-            cout << elemPol.GetAmenda()<<endl;
-            varTotal += (elemPol.GetAmenda());
         }
+        cout << "Totalul amenzilor date de agentul selectat: " << varTotal<< endl;
+        system ("pause");
     }
-    cout << "Totalul amenzilor date de agentul selectat: " << varTotal<< endl;
-    system ("pause");
 }
 
 void SectieDePolitie::AfiseazaAmenziContravenient()

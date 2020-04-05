@@ -2,6 +2,7 @@
 #include "SectieDePolitie.h"
 #include <stdlib.h>
 #include <iostream>
+#include <ios>  // Provides ios_base::failure
 using namespace std;
 
 void Meniu()
@@ -18,34 +19,17 @@ void Meniu()
     cout << "Trebuie sa introduceti un numar intre 0 si 6: ";
 }
 
-#include <ios>  // Provides ios_base::failure
-#include <iostream>  // Provides cin
-
 template <typename T>
 T getValidatedInput()
 {
-    // Get input of type T
     T result;
     cin >> result;
-
-    // Check if the failbit has been set, meaning the beginning of the input
-    // was not type T. Also make sure the result is the only thing in the input
-    // stream, otherwise things like 2b would be a valid int.
     if (cin.fail() || cin.get() != '\n')
     {
-        // Set the error state flag back to goodbit. If you need to get the input
-        // again (e.g. this is in a while loop), this is essential. Otherwise, the
-        // failbit will stay set.
         cin.clear();
-
-        // Clear the input stream using and empty while loop.
         while (cin.get() != '\n');
-
-        // Throw an exception. Allows the caller to handle it any way you see fit
-        // (exit, ask for input again, etc.)
         throw ios_base::failure("Invalid input.");
     }
-
     return result;
 }
 
@@ -58,23 +42,20 @@ int main()
     while (nrintrodus !=0)
     {
         Meniu();
-        //https://stackoverflow.com/questions/514420/how-to-validate-numeric-input-c
         while (true)
         {
-            cout << "Introduceti un numar: ";
             try
             {
                 nrintrodus = getValidatedInput<int>();
             }
             catch (exception e)
             {
-                cerr << e.what() << endl;
+                e.what();
+                cout << "Reintroduceti un numar: ";
                 continue;
             }
         break;
         }
-        //cout << "You entered: " << nrintrodus << endl;
-        //return EXIT_SUCCESS;
 
         switch (nrintrodus)
         {
@@ -126,68 +107,6 @@ int main()
 }
     //MAXIMUL DINTRUN VECTOR
     //https://profs.info.uaic.ro/~infogim/2015/lectii/5/59.pdf
-
-
-/*    Meniu();
-        //validez inputul sa nu fie alfabetic sau cu caractere speciale
-
-        while (!(cin >> nrintrodus))
-        {
-            cout << "Atentie! Trebuie sa reintroduceti un numar intre 0 si 6: ";
-            cin.clear();
-            cin.ignore(INT_MAX, '\n');
-            //validez inputul sa nu fie mai mare decat 6
-            while(nrintrodus > 6)
-            {
-                cout << "Atentie! Trebuie sa reintroduceti un numar intre 0 si 6: ";
-                cin >> nrintrodus;
-            }
-        }*/
-
-
-/*
-        Meniu();
-        //validez inputul sa nu fie alfabetic sau cu caractere speciale
-        bool retFct = false;
-        while (!(cin >> nrintrodus))
-        {
-            cout << "Atentie! Trebuie sa reintroduceti un numar intre 0 si 6: ";
-            cin.clear();
-            cin.ignore(INT_MAX, '\n');
-            //validez inputul sa nu fie mai mare decat 6
-            while(nrintrodus > 6)
-            {
-                cout << "Atentie! Trebuie sa reintroduceti un numar intre 0 si 6: ";
-                cin >> nrintrodus;
-            }
-            while(!retFct)
-            {
-                try
-                {
-                    retFct = Validare();
-                    if (!retFct)
-                    {
-                        cout << "Nu a-ti introdus un numar! Mai introduceti o data:" << endl;
-                        cin >> nrintrodus;
-                    }
-                }
-                catch(const char* ex)
-                {
-                    cout << ex << endl;
-                    cin.clear();
-                    cin.ignore(10, '\n');
-                }
-            }
-        }
-*/
-
-
-
-
-
-
-
-
 /*
 Politist SectieDePolitie::AdaugaPolitist()
 {
