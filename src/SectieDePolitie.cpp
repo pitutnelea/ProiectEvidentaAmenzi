@@ -51,17 +51,9 @@ Politist SectieDePolitie::AdaugaPolitist()
         vctPolitist.push_back(Politist{"AgentVirtual", 0});
     }
     system ("cls");
-    cout << "Introduceti numele politistului: ";
+    cout << "Introduceti numele agentului: ";
     cin >> nume;
-    cout << "Introduceti codul politistului: ";
-    //validez inputul sa nu mai existe un politist cu acest cod
-    cin >> codPolitist;
-    /*if(codPolitist == 0)
-    {
-        cout << "Atentie! Alegeti un alt cod in afara de 0:";
-        cin >> codPolitist;
-    }*/
-
+    cout << "Introduceti codul agentului: ";
     while(!codPolitist)
     {
         try
@@ -74,16 +66,14 @@ Politist SectieDePolitie::AdaugaPolitist()
             cout << "Reintroduceti un numar: ";
             continue;
         }
-        break;
-    }
-
-    for (unsigned int i=0; i < vctPolitist.size(); i++)
-    {
-        while(vctPolitist[i].GetCodPolitist() == codPolitist)
+        for (unsigned int i=0; i < vctPolitist.size(); i++)
         {
-            cout << "Atentie! Acest cod deja exista, va rugam sa alegeti un alt cod: ";
-            cin >> codPolitist;
-            continue;
+            if(vctPolitist[i].GetCodPolitist() == codPolitist)
+            {
+                cout << "Atentie! Acest cod deja exista, va rugam sa alegeti un alt cod: ";
+                cin.clear();
+                codPolitist = 0;
+            }
         }
     }
     vctPolitist.push_back(Politist{nume, codPolitist});
@@ -102,8 +92,7 @@ void SectieDePolitie::StergePolitist()
         }
     }
     cout << "Selectati numarul agentului de sters: ";
-    cin >> codulAgentului;
-    while((!codulAgentului)&&(codulAgentului!=0))
+    while(!codulAgentului)
     {
         try
         {
@@ -115,8 +104,18 @@ void SectieDePolitie::StergePolitist()
             cout << "Reintroduceti un numar: ";
             continue;
         }
-        break;
+        for (unsigned int i = 0; i < vctPolitist.size(); i++)
+        {
+            if (((vctPolitist[i].GetCodPolitist()) != codulAgentului) || (codulAgentului == 0))
+            {
+                cout << "Atentie! A-ti ales alt cod. Va rugam sa alegeti un cod din lista afisata: ";
+                cin.clear();
+                codulAgentului = 0;
+                break;
+            }
+        }
     }
+
     for(auto it = vctPolitist.begin(); it != vctPolitist.end(); ++it)
     {
         if(codulAgentului !=0)
@@ -136,7 +135,6 @@ void SectieDePolitie::StergePolitist()
             elemPol.SetCodPolitist(0);
         }
     }
-    system("pause");
 }
 
 double valAmenda;
@@ -329,8 +327,7 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
         cout << elem.GetCodPolitist() <<". "<< elem.GetNumePolitist() <<endl;
         }
     }
-    cout<<"Selectati codul politistului pentru a vedea toate amenzile date de acesta: ";
-    cin >> codulAgentului;
+    cout<<"Selectati codul agentului: ";
     while (!codulAgentului)
     {
         try
@@ -343,6 +340,15 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
             cout << "Reintroduceti un numar: ";
             continue;
         }
+        /*for(unsigned int i=0; i < vctPolitist.size(); i++)
+        {
+            if (vctPolitist[i].GetCodPolitist() != codulAgentului)
+            {
+                cout << "Atentie! Acest cod nu corespunde niciuniu agent. Reintroduceti codul: ";
+                cin.clear();
+                codulAgentului = 0;
+            }
+        }*/
         break;
     }
     system("cls");
@@ -376,9 +382,8 @@ void SectieDePolitie::AfiseazaAmenziContravenient()
     {
         cout << elem.GetCodContravenient() <<". "<< elem.GetNumeContravenient() <<endl;
     }
-    cout<<"Selectati codul contravenientului: ";
+    cout<<"Selectati contravenientul: ";
     unsigned int codulContravenientului;
-    cin >> codulContravenientului;
     while (!codulContravenientului)
     {
         try
@@ -391,11 +396,18 @@ void SectieDePolitie::AfiseazaAmenziContravenient()
             cout << "Reintroduceti un numar: ";
             continue;
         }
-        break;
+        for(unsigned int i = 0; i < vctContravenient.size(); i++)
+        {
+            if(vctContravenient[i].GetCodContravenient() != codulContravenientului)
+            {
+                cout << "Atentie! Va rugam sa reintroduceti un cod din lista afisata:";
+                cin.clear();
+                codulContravenientului = 0;
+            }
+        }
     }
     double varTotal;
     system("cls");
-
     for(Amenzi elemContr : vctAmenzi)
     {
         if ((elemContr.GetCodContrav()) == codulContravenientului)
