@@ -206,7 +206,6 @@ Contravenient SectieDePolitie::AdaugaAmenda()
         {
             //cout << "NU A EXISTAT" << endl;
             cout << "Introduceti codul soferului: ";
-            cin >> codContravenient;
             while (!codContravenient)
             {
                 try
@@ -223,18 +222,6 @@ Contravenient SectieDePolitie::AdaugaAmenda()
             }
             vctContravenient.push_back(Contravenient{nume, codContravenient});
         }
-        /*while (codContravenient)
-        {
-            cout << "Cod invalid! Reintroduceti un cod in afara de: 0, ";
-            for (Contravenient elem : vctContravenient)
-            {
-                cout << elem.GetCodContravenient();
-                cout << ", ";
-            }
-            cout << " " <<endl;
-            cout << "Reintroduceti codul: ";
-            cin >> codContravenient;
-        }*/
         system ("cls");
         cout << "1. bicicleta" <<endl;
         cout << "2. motoreta-motocicleta "<<endl;
