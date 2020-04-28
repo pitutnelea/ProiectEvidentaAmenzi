@@ -1,20 +1,11 @@
 #include "SectieDePolitie.h"
 #include <iostream>
-#using namespace std;
 #include <fstream>
-
-
 #include <string>
 #include <sstream>
 #include <ios>
 #include <stdlib.h>
-
-
-
-//#include <algorithm>
-//#include <cmath>
-//#include <algorithm>
-//#include <cctype>
+using namespace std;
 
 SectieDePolitie::SectieDePolitie()
 {
@@ -81,7 +72,8 @@ Politist SectieDePolitie::AdaugaPolitist()
 
 void SectieDePolitie::StergePolitist()
 {
-    unsigned int codulAgentului;
+    unsigned int codulAgentului = 0;
+    bool gasit = false;
     cout << "Codul si numele aferent fiecarui agent: " << endl;
     for(Politist elem : vctPolitist)
     {
@@ -91,11 +83,17 @@ void SectieDePolitie::StergePolitist()
         }
     }
     cout << "Selectati numarul agentului de sters: ";
-    while(!codulAgentului)
+    while(codulAgentului <= 0) // bucla va continua pana ii voi da un input mai mare decat 0
     {
         try
         {
             codulAgentului = getValidatedInput<int>();
+            if (codulAgentului <= 0)
+            {
+                cout << "Atentie! A-ti ales alt cod. Va rugam sa alegeti un cod din lista afisata: ";
+                cin.clear();
+                continue; // ca sa nu imi accepte 0 sau valori negative, "continue" ma duce sus la while
+            }
         }
         catch (exception e)
         {
@@ -103,26 +101,32 @@ void SectieDePolitie::StergePolitist()
             cout << "Reintroduceti un numar: ";
             continue;
         }
-        for (unsigned int i = 0; i < vctPolitist.size(); i++)
+        //verific daca codul agentului este in vector
+        for(auto it = vctPolitist.begin(); it != vctPolitist.end(); ++it)
         {
-            if (((vctPolitist[i].GetCodPolitist()) != codulAgentului) || (codulAgentului == 0))
+            if ((it->GetCodPolitist())== codulAgentului)
             {
-                cout << "Atentie! A-ti ales alt cod. Va rugam sa alegeti un cod din lista afisata: ";
-                cin.clear();
-                codulAgentului = 0;
-                break;
+                gasit = true; // exista politist cu acest cod
+                break; // ies din bucla for
             }
         }
+        if(gasit)
+        {
+            break; // inseamna ca e cod valid, ies din while
+        }
+        //daca nu il gaseste, printez mesajul si continui sa cer cod de la tastatura
+        cout << "Atentie! A-ti ales alt cod. Va rugam sa alegeti un cod din lista afisata: ";
+        cin.clear();
+        codulAgentului = 0; //resetez valoarea ca sa nu iasa din while
     }
-
     for(auto it = vctPolitist.begin(); it != vctPolitist.end(); ++it)
     {
         if(codulAgentului !=0)
         {
             if ((it->GetCodPolitist())== codulAgentului)
             {
-            vctPolitist.erase(it);
-            break;
+                vctPolitist.erase(it);
+                break;
             }
         }
     }
@@ -136,16 +140,17 @@ void SectieDePolitie::StergePolitist()
     }
 }
 
-double valAmenda;
+double valAmenda = 0;
 Contravenient SectieDePolitie::AdaugaAmenda()
 {
     system ("cls");
     string nume;
     unsigned int codContravenient = 0;
-    unsigned int codPolitist;
+    unsigned int codPolitist = 0;
     unsigned int varEnum;
     unsigned int i;
     Categorii valCateg;
+    bool gasit = false;
     cout << "Codul si numele aferent fiecarui agent: " << endl;
     for(Politist elem : vctPolitist)
     {
@@ -155,12 +160,17 @@ Contravenient SectieDePolitie::AdaugaAmenda()
         }
     }
     cout<< "Selectati codul agentului constatator: ";
-    cin >> codPolitist;
-    while(!codPolitist)
+    while(codPolitist <= 0)
     {
         try
         {
             codPolitist = getValidatedInput<int>();
+            if (codPolitist <= 0)
+            {
+                cout << "Atentie! A-ti ales alt cod. Va rugam sa alegeti un cod din lista afisata: ";
+                cin.clear();
+                continue;
+            }
         }
         catch (exception e)
         {
@@ -168,9 +178,25 @@ Contravenient SectieDePolitie::AdaugaAmenda()
             cout << "Reintroduceti un numar: ";
             continue;
         }
-        break;
+        //verific daca codul agentului este in vector
+        for(auto it = vctPolitist.begin(); it != vctPolitist.end(); ++it)
+        {
+            if ((it->GetCodPolitist())== codPolitist)
+            {
+                gasit = true;
+                break;
+            }
+        }
+        if(gasit)
+        {
+            break;
+        }
+        //daca nu il gaseste, printez mesajul si continui sa cer cod de la tastatura
+        cout << "Atentie! A-ti ales alt cod. Va rugam sa alegeti un cod din lista afisata: ";
+        cin.clear();
+        codPolitist = 0;
     }
-    if(codPolitist !=0)
+    if(codPolitist > 0)
     {
         cout << "Introduceti numele soferului: ";
         cin >> nume;
@@ -185,12 +211,17 @@ Contravenient SectieDePolitie::AdaugaAmenda()
         }
 
         cout << "Precizati valoarea amenzii: ";
-        cin >>valAmenda;
-        while (!valAmenda)
+        while (valAmenda <= 0)
         {
             try
             {
                 valAmenda = getValidatedInput<int>();
+                if(valAmenda <= 0)
+                {
+                    valAmenda = 0;
+                    cout << "Introduceti o valoare pozitiva (un numar in afara de 0): ";
+                    continue;
+                }
             }
             catch (exception e)
             {
@@ -304,7 +335,8 @@ Contravenient SectieDePolitie::AdaugaAmenda()
 
 void SectieDePolitie::AfiseazaAmenziPolitist()
 {
-    unsigned int codulAgentului;
+    unsigned int codulAgentului = 0;
+    bool gasit = false;
     cout << "Codul si numele aferent fiecarui agent: " << endl;
     for(Politist elem : vctPolitist)
     {
@@ -314,11 +346,17 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
         }
     }
     cout<<"Selectati codul agentului: ";
-    while (!codulAgentului)
+    while (codulAgentului <= 0)
     {
         try
         {
             codulAgentului = getValidatedInput<int>();
+            if (codulAgentului <= 0)
+            {
+                cout << "Atentie! A-ti ales alt cod. Va rugam sa alegeti un cod din lista afisata: ";
+                cin.clear();
+                continue;
+            }
         }
         catch (exception e)
         {
@@ -326,16 +364,23 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
             cout << "Reintroduceti un numar: ";
             continue;
         }
-        /*for(unsigned int i=0; i < vctPolitist.size(); i++)
+        //verific daca codul agentului este in vector
+        for(auto it = vctPolitist.begin(); it != vctPolitist.end(); ++it)
         {
-            if (vctPolitist[i].GetCodPolitist() != codulAgentului)
+            if ((it->GetCodPolitist())== codulAgentului)
             {
-                cout << "Atentie! Acest cod nu corespunde niciuniu agent. Reintroduceti codul: ";
-                cin.clear();
-                codulAgentului = 0;
+                gasit = true;
+                break;
             }
-        }*/
-        break;
+        }
+        if(gasit)
+        {
+            break;
+        }
+        //daca nu il gaseste, printez mesajul si continui sa cer cod de la tastatura
+        cout << "Atentie! A-ti ales alt cod. Va rugam sa alegeti un cod din lista afisata: ";
+        cin.clear();
+        codulAgentului = 0;
     }
     system("cls");
     double varTotal;
@@ -442,28 +487,7 @@ void SectieDePolitie::AfiseazaSituatieAmenzi()
     }
     cout << "Totalul amenzilor date de toti agentii: " << varTotal<< endl;
 
-
-    /*for(Amenzi elem : vctSituatieAmenzi)
-    {
-        cout << elem.GetAmenda() <<endl;
-    }*/
-
     system ("pause");
-
-
-//Înțeleg de ce ai pus elemente de tip Amenzi în vector
-//Că așa ai și codul polițistului nu doar totalul amenzilor?
-/*
-    for(const auto &i: vctSituatieAmenzi)
-        cout << i <<endl;
-        sort(vctSituatieAmenzi.begin(), vctSituatieAmenzi.end());
-    for (const auto &i: vctSituatieAmenzi)
-        cout << i << ' '<<endl;
-    // Sort the vector in descending order
-    sort(vctSituatieAmenzi.begin(), vctSituatieAmenzi.end(), wayToSort);
-    for (int i = 0; i < vctSituatieAmenzi.size(); i++)
-    {
-*/
 }
 
 void SectieDePolitie::ScriereInFisier()
