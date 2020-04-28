@@ -1,6 +1,6 @@
 #include "SectieDePolitie.h"
 #include <iostream>
-using namespace std;
+#using namespace std;
 #include <fstream>
 
 
