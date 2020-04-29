@@ -20,6 +20,11 @@ Amenzi::~Amenzi()
     //dtor
 }
 
+bool Amenzi::operator <(Amenzi& amenda)
+{
+    return (this->_amenda > amenda.GetAmenda());
+}
+
 void Amenzi::ExportAmenzi(ostream& out)
 {
     out << _codPolitist << " " << _codContravenient << " " << _amenda << " " << _categorie;
