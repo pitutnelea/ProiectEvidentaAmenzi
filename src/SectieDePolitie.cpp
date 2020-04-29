@@ -6,6 +6,7 @@
 #include <ios>
 #include <stdlib.h>
 using namespace std;
+#include <algorithm>
 
 SectieDePolitie::SectieDePolitie()
 {
