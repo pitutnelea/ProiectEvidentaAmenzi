@@ -16,6 +16,7 @@ class Amenzi
         unsigned int GetCodPolitist() {return _codPolitist;}
         unsigned int GetCodContrav(){return _codContravenient;}
         Categorii GetCategorie(){return _categorie;}
+        bool operator < (Amenzi& amenda); // metoda pentru sortare care redefineste operatorul <
         void ExportAmenzi(std::ostream&);
         virtual ~Amenzi();
 
