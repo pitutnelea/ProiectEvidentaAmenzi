@@ -140,7 +140,7 @@ void SectieDePolitie::StergePolitist()
     }
 }
 
-double valAmenda = 0;
+double valAmenda;
 Contravenient SectieDePolitie::AdaugaAmenda()
 {
     system ("cls");
@@ -178,7 +178,6 @@ Contravenient SectieDePolitie::AdaugaAmenda()
             cout << "Reintroduceti un numar: ";
             continue;
         }
-        //verific daca codul agentului este in vector
         for(auto it = vctPolitist.begin(); it != vctPolitist.end(); ++it)
         {
             if ((it->GetCodPolitist())== codPolitist)
@@ -191,12 +190,11 @@ Contravenient SectieDePolitie::AdaugaAmenda()
         {
             break;
         }
-        //daca nu il gaseste, printez mesajul si continui sa cer cod de la tastatura
         cout << "Atentie! A-ti ales alt cod. Va rugam sa alegeti un cod din lista afisata: ";
         cin.clear();
         codPolitist = 0;
     }
-    if(codPolitist > 0)
+    if(codPolitist !=0)
     {
         cout << "Introduceti numele soferului: ";
         cin >> nume;
@@ -211,17 +209,12 @@ Contravenient SectieDePolitie::AdaugaAmenda()
         }
 
         cout << "Precizati valoarea amenzii: ";
-        while (valAmenda <= 0)
+        cin >>valAmenda;
+        while (!valAmenda)
         {
             try
             {
                 valAmenda = getValidatedInput<int>();
-                if(valAmenda <= 0)
-                {
-                    valAmenda = 0;
-                    cout << "Introduceti o valoare pozitiva (un numar in afara de 0): ";
-                    continue;
-                }
             }
             catch (exception e)
             {
@@ -364,7 +357,6 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
             cout << "Reintroduceti un numar: ";
             continue;
         }
-        //verific daca codul agentului este in vector
         for(auto it = vctPolitist.begin(); it != vctPolitist.end(); ++it)
         {
             if ((it->GetCodPolitist())== codulAgentului)
@@ -377,7 +369,6 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
         {
             break;
         }
-        //daca nu il gaseste, printez mesajul si continui sa cer cod de la tastatura
         cout << "Atentie! A-ti ales alt cod. Va rugam sa alegeti un cod din lista afisata: ";
         cin.clear();
         codulAgentului = 0;
@@ -406,6 +397,7 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
         system ("pause");
     }
 }
+
 
 void SectieDePolitie::AfiseazaAmenziContravenient()
 {
