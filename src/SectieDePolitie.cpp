@@ -402,17 +402,24 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
 
 void SectieDePolitie::AfiseazaAmenziContravenient()
 {
+    unsigned int codulContravenientului = 0;
+    bool gasit = false;
     for(Contravenient elem : vctContravenient)
     {
         cout << elem.GetCodContravenient() <<". "<< elem.GetNumeContravenient() <<endl;
     }
     cout<<"Selectati contravenientul: ";
-    unsigned int codulContravenientului;
-    while (!codulContravenientului)
+    while (codulContravenientului <= 0)
     {
         try
         {
             codulContravenientului = getValidatedInput<int>();
+            if (codulContravenientului <= 0)
+            {
+                cout << "Atentie! A-ti ales alt cod. Va rugam sa alegeti un cod din lista afisata: ";
+                cin.clear();
+                continue;
+            }
         }
         catch (exception e)
         {
@@ -420,15 +427,21 @@ void SectieDePolitie::AfiseazaAmenziContravenient()
             cout << "Reintroduceti un numar: ";
             continue;
         }
-        for(unsigned int i = 0; i < vctContravenient.size(); i++)
+        for(auto it = vctContravenient.begin(); it!=vctContravenient.end(); ++it)
         {
-            if(vctContravenient[i].GetCodContravenient() != codulContravenientului)
+            if((it->GetCodContravenient()) == codulContravenientului)
             {
-                cout << "Atentie! Va rugam sa reintroduceti un cod din lista afisata:";
-                cin.clear();
-                codulContravenientului = 0;
+                gasit = true;
+                break;
             }
         }
+        if(gasit)
+        {
+            break;
+        }
+        cout << "Atentie! A-ti ales alt cod. Va rugam sa alegeti un cod din lista afisata: ";
+        cin.clear();
+        codulContravenientului = 0;
     }
     double varTotal;
     system("cls");
@@ -480,6 +493,19 @@ void SectieDePolitie::AfiseazaSituatieAmenzi()
         vctSituatieAmenzi.push_back(varTemp);
     }
     cout << "Totalul amenzilor date de toti agentii: " << varTotal<< endl;
+    /*cout << "AFTER SORTING"<<endl;
+    sort(vctSituatieAmenzi.begin(), vctSituatieAmenzi.end());
+    //sort(vctPolitist.begin(), vctPolitist.end());
+    for (Politist elemPol : vctPolitist)
+    {
+        double varTemp = 0;
+        for(Amenzi elemAmenzi : vctSituatieAmenzi)
+        {
+            varTemp = elemAmenzi.GetAmenda();
+        }
+        cout << elemPol.GetCodPolitist() << ". "<<elemPol.GetNumePolitist() << " "<< varTemp << endl;
+    }
+    cout << "Totalul amenzilor date de toti agentii: " << varTotal<< endl;*/
     system ("pause");
 }
 
