@@ -210,8 +210,8 @@ Contravenient SectieDePolitie::AdaugaAmenda()
         }
 
         cout << "Precizati valoarea amenzii: ";
-        cin >>valAmenda;
-        while (!valAmenda)
+        valAmenda = 0;
+        while (valAmenda <= 0)
         {
             try
             {
@@ -223,7 +223,10 @@ Contravenient SectieDePolitie::AdaugaAmenda()
                 cout << "Reintroduceti un numar: ";
                 continue;
             }
-            break;
+            if(valAmenda <= 0)
+            {
+                cout << "Introduceti un numar mai mare decat 0: ";
+            }
         }
         //IF - daca numele nu a existat | daca numele a existat
         if (i == (vctContravenient.size()))
@@ -487,25 +490,24 @@ void SectieDePolitie::AfiseazaSituatieAmenzi()
                 varPartial += (elemPol.GetAmenda());
             }
         }
-        cout << elem.GetCodPolitist() <<". " << elem.GetNumePolitist()<< " "<<varPartial<<endl;
         varTotal += varPartial;
         varTemp += varPartial;
         vctSituatieAmenzi.push_back(varTemp);
     }
-    cout << "Totalul amenzilor date de toti agentii: " << varTotal<< endl;
-    /*cout << "AFTER SORTING"<<endl;
     sort(vctSituatieAmenzi.begin(), vctSituatieAmenzi.end());
-    //sort(vctPolitist.begin(), vctPolitist.end());
-    for (Politist elemPol : vctPolitist)
+    sort(vctPolitist.begin(), vctPolitist.end());
+    for (Politist elemPolitist : vctPolitist)
     {
-        double varTemp = 0;
-        for(Amenzi elemAmenzi : vctSituatieAmenzi)
-        {
-            varTemp = elemAmenzi.GetAmenda();
-        }
-        cout << elemPol.GetCodPolitist() << ". "<<elemPol.GetNumePolitist() << " "<< varTemp << endl;
+        cout<< elemPolitist.GetCodPolitist() <<". " << elemPolitist.GetNumePolitist() << "   ";
     }
-    cout << "Totalul amenzilor date de toti agentii: " << varTotal<< endl;*/
+    cout << endl;
+    for (Amenzi elemAmenzi : vctSituatieAmenzi)
+    {
+        cout << elemAmenzi.GetAmenda()<< "         ";
+    }
+    cout << endl;
+    cout << "Totalul amenzilor date de toti agentii: " << varTotal<< endl;
+
     system ("pause");
 }
 
