@@ -13,6 +13,8 @@ class Politist
         string GetNumePolitist() {return _numePolitist;}
         void SetCodPolitist(unsigned int codPolitist){_codPolitist = codPolitist;}
         unsigned int GetCodPolitist() {return _codPolitist;}
+        bool operator < (Politist& politist);
+        bool operator << (Politist& politist);
         void ExportPolitist(std::ostream&);
         virtual ~Politist();
 
