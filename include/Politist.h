@@ -9,18 +9,18 @@ class Politist
     public:
         Politist();
         Politist(string, unsigned int);
-        void SetNumePolitist(string numePolitist){_numePolitist = numePolitist;}
+        Politist(double, string); // pt metoda afiseaza situatie amenzi
+        double GetValAmenda(){return _valAmenda;}
         string GetNumePolitist() {return _numePolitist;}
-        void SetCodPolitist(unsigned int codPolitist){_codPolitist = codPolitist;}
         unsigned int GetCodPolitist() {return _codPolitist;}
         bool operator < (Politist& politist);
-        bool operator << (Politist& politist);
         void ExportPolitist(std::ostream&);
         virtual ~Politist();
 
     protected:
 
     private:
+        double _valAmenda; // pt metoda afiseaza situatie amenzi
         string _numePolitist;
         unsigned int _codPolitist;
 };
