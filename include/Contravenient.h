@@ -9,9 +9,7 @@ class Contravenient
     public:
         Contravenient();
         Contravenient(string, unsigned int);
-        void SetNumeContravenient(string numeContravenient){_numeContravenient = numeContravenient;}
         string GetNumeContravenient() {return _numeContravenient;}
-        void SetCodContravenient(unsigned int codContravenient){_codContravenient = codContravenient;}
         unsigned int GetCodContravenient() {return _codContravenient;}
         void ExportContravenient(std::ostream&);
         virtual ~Contravenient();
