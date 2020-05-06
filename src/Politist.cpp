@@ -1,7 +1,7 @@
 #include "Politist.h"
 #include <iostream>
 using namespace std;
-#include <fstream>  // include i si o
+#include <fstream>  // iclude i si o
 
 Politist::Politist()
 {
@@ -13,6 +13,11 @@ Politist::Politist(string numePolitist, unsigned int codPolitist):_numePolitist{
 
 }
 
+Politist::Politist(double valamenda, string nume): _valAmenda{valamenda}, _numePolitist{nume}
+{
+
+}
+
 Politist::~Politist()
 {
     //dtor
@@ -20,12 +25,7 @@ Politist::~Politist()
 
 bool Politist::operator <(Politist& politist)
 {
-    return (this->_numePolitist > politist.GetNumePolitist());
-}
-
-bool Politist::operator <<(Politist& politist)
-{
-    return (this->_codPolitist > politist.GetCodPolitist());
+    return (this->_valAmenda > politist.GetValAmenda());
 }
 
 void Politist::ExportPolitist(ostream& out)
