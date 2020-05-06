@@ -1,10 +1,6 @@
 #include "SectieDePolitie.h"
-#include <iostream>
 #include <fstream>
-#include <string>
 #include <sstream>
-#include <ios>
-#include <stdlib.h>
 using namespace std;
 #include <algorithm>
 
@@ -45,11 +41,17 @@ Politist SectieDePolitie::AdaugaPolitist()
     cout << "Introduceti numele agentului: ";
     cin >> nume;
     cout << "Introduceti codul agentului: ";
-    while(!codPolitist)
+    while(codPolitist<=0)
     {
         try
         {
             codPolitist = getValidatedInput<int>();
+            if (codPolitist <= 0)
+            {
+                cout << "Atentie! Va rugam sa reintroduceti un alt cod: ";
+                cin.clear();
+                continue;
+            }
         }
         catch (exception e)
         {
@@ -402,7 +404,6 @@ void SectieDePolitie::AfiseazaAmenziPolitist()
     }
 }
 
-
 void SectieDePolitie::AfiseazaAmenziContravenient()
 {
     unsigned int codulContravenientului = 0;
@@ -479,36 +480,31 @@ void SectieDePolitie::AfiseazaAmenziContravenient()
 void SectieDePolitie::AfiseazaSituatieAmenzi()
 {
     double varTotal;
-    for(Politist elem : vctPolitist)
+    for(unsigned int i = 0; i < vctPolitist.size(); i++)
     {
         double varTemp = 0;
         double varPartial = 0;
         for(Amenzi elemPol : vctAmenzi)
         {
-            if ((elemPol.GetCodPolitist())== (elem.GetCodPolitist()))
+            if ((elemPol.GetCodPolitist())== (vctPolitist[i].GetCodPolitist()))
             {
                 varPartial += (elemPol.GetAmenda());
             }
         }
         varTotal += varPartial;
         varTemp += varPartial;
-        vctSituatieAmenzi.push_back(varTemp);
+        //vctSituatieAmenzi.push_back(varTemp);
+        //vctSituatiePolitist.push_back(Politist{vctPolitist[i].GetNumePolitist(),vctPolitist[i].GetCodPolitist()});
+        vctSituatieAmenziTotal.push_back(Politist{varTemp, vctPolitist[i].GetNumePolitist()});
     }
-    sort(vctSituatieAmenzi.begin(), vctSituatieAmenzi.end());
-    sort(vctPolitist.begin(), vctPolitist.end());
-    for (Politist elemPolitist : vctPolitist)
+    sort(vctSituatieAmenziTotal.begin(), vctSituatieAmenziTotal.end());
+    for(Politist elem: vctSituatieAmenziTotal)
     {
-        cout<< elemPolitist.GetCodPolitist() <<". " << elemPolitist.GetNumePolitist() << "   ";
+        cout << elem.GetNumePolitist()<< " " <<elem.GetValAmenda()<<endl;
     }
-    cout << endl;
-    for (Amenzi elemAmenzi : vctSituatieAmenzi)
-    {
-        cout << elemAmenzi.GetAmenda()<< "         ";
-    }
-    cout << endl;
     cout << "Totalul amenzilor date de toti agentii: " << varTotal<< endl;
-
-    system ("pause");
+    system("pause");
+    vctSituatieAmenziTotal.clear();
 }
 
 void SectieDePolitie::ScriereInFisier()
