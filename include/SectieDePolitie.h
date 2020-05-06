@@ -12,11 +12,11 @@ class SectieDePolitie
     public:
         SectieDePolitie();
         Politist AdaugaPolitist();
-        void StergePolitist(); ////intro noua clasa sau mainul o lista de vecetori cu o lista
+        void StergePolitist();
         Contravenient AdaugaAmenda();
-        void AfiseazaAmenziPolitist(); //toate amenzile date de un anumit agent
-        void AfiseazaAmenziContravenient(); //toate amenzile luate de un anumit contravenient
-        void AfiseazaSituatieAmenzi(); // afisez fiecare agent cu totalul amenzilor date
+        void AfiseazaAmenziPolitist();
+        void AfiseazaAmenziContravenient();
+        void AfiseazaSituatieAmenzi();
         void ScriereInFisier();
         void CitireDinFisier(); //IMPORT
         virtual ~SectieDePolitie();
@@ -27,7 +27,7 @@ class SectieDePolitie
         vector <Politist> vctPolitist;
         vector <Contravenient> vctContravenient;
         vector <Amenzi> vctAmenzi;
-        vector <Amenzi> vctSituatieAmenzi;
+        vector <Politist> vctSituatieAmenziTotal; // pt metoda afiseaza situatie amenzi
         void ImportAgenti();
         void ImportContravenienti();
         void ImportAmenzi();
