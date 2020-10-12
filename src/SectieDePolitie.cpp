@@ -31,7 +31,7 @@ T getValidatedInput()
 Politist SectieDePolitie::AdaugaPolitist()
 {
     string nume;
-    unsigned int codPolitist;
+    unsigned int codPolitist = 0;
     if (vctPolitist.size()==0)
     {
         Politist{"AgentVirtual", 0};
